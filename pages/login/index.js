@@ -4,47 +4,46 @@ import Cadastro from '../cadastro';
 
 import {Ionicons} from '@expo/vector-icons'
 
-// Storage
 
-
+import { url_api } from "../../utils/constants";
+import {save_token} from "../../utils/save-token";
+import Toast from 'react-native-toast-message';
 
 const Login = ({navigation}) => {
 
-    const [telefone, setTelefone] = useState('');
-    const [senha, setSenha] = useState('');
-
-    const salvarToken = async (value) => {
-        try {
-          await AsyncStorage.setItem('@jwt', value)
-        } catch (e) {
-          // saving error
-        }
-    }
+    
+    const [cellphoneNumber, setCellphoneNumber] = useState('');
+    const [password, setPassword] = useState('');
 
     const Logar =()=>{
-        alert('CELULAR: ' + telefone + '   SENHA: '  + senha)
-        const corpo ={
-            telefone, telefone,
-            senha, senha
+        const body ={
+            cellphoneNumber: cellphoneNumber,
+            password: password,
         }
-        fetch('http://192.168.0.18:500/conta/entrar',{
+        fetch(`${url_api}/users/signin/deliverer`,{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
             },
-
-            body : JSON.stringify(corpo)
+            body : JSON.stringify(body)
          })
          .then(response => response.json())
          .then(data => {
-             console.log(data);
-             if(data.status != 404){
-                 alert('Login efetuado com sucesso!')
-                 salvarToken(data.token)
-                 navigation.push('Autenticado')
-             }else{
-                 alert('Dados incorretos')
-             }
+            if (data.sucesso) {
+                Toast.show({
+                    text1: data.mensagem,
+                    text2: "",
+                    type: "success"
+                });
+                save_token(data.dados)
+                navigation.push('Autenticado')
+            } else {
+                Toast.show({
+                    text1: data.mensagem,
+                    text2: "",
+                    type: "error"
+                });
+            }
          })
      }
     
@@ -60,7 +59,7 @@ const Login = ({navigation}) => {
 
     return(
         <View style={styles.container}>
-
+<Toast ref={(ref) => Toast.setRef(ref)} />
             
         <Image
             style={styles.logo}
@@ -76,8 +75,8 @@ const Login = ({navigation}) => {
         <View style={styles.input}>
         <TextInput
                 style={styles.inputinterno}
-                onChangeText={text => setTelefone(text)}
-                value={telefone}
+                onChangeText={text => setCellphoneNumber(text)}
+                value={cellphoneNumber}
                 placeholder="Digite seu numero de telefone"
                 placeholderTextColor ="black"
 
@@ -93,8 +92,8 @@ const Login = ({navigation}) => {
         <View style={styles.input}>
             <TextInput
             style={styles.inputinterno}
-            onChangeText={text => setSenha(text)}
-            value={senha}
+            onChangeText={text => setPassword(text)}
+            value={password}
             secureTextEntry={true}
             placeholder="Digite sua senha"
             placeholderTextColor ="black"
