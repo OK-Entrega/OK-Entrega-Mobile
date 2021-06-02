@@ -37,7 +37,7 @@ const EsqueciSenha =({navigation})=>{
         
     }
     const Login =()=>{
-        navigation.navigate('Login')
+        navigation.navigate('login')
     }
 
     return(
@@ -46,7 +46,7 @@ const EsqueciSenha =({navigation})=>{
         
         <Image
             style={styles.logo}
-            source={require('../../assets/logo.jpeg')}
+            source={require('../../assets/logo.png')}
         />
          
         <View>

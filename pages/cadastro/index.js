@@ -55,7 +55,7 @@ const Cadastro = ({ navigation }) => {
     }
 
     const Login = () => {
-        navigation.navigate('Login')
+        navigation.navigate('login')
     }
 
 
@@ -66,7 +66,7 @@ const Cadastro = ({ navigation }) => {
 
             <Image
                 style={styles.logo}
-                source={require('../../assets/logo.jpeg')}
+                source={require('../../assets/logo.png')}
             />
 
 
@@ -144,18 +144,6 @@ const Cadastro = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
 
-
-            <View style={styles.checkboxContainer}>
-                <CheckBox
-                    value={isSelected}
-                    onValueChange={setSelection}
-                    style={styles.checkbox}
-                />
-                <Text style={styles.label}>Li e aceito os termos de uso {isSelected ? "👍" : "👎"}</Text>
-            </View>
-
-
-
             <TouchableOpacity
                 style={styles.button}
                 onPress={Cadastrar}
@@ -219,17 +207,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
 
     },
-    checkbox: {
-        alignSelf: "center",
-        height: 13,
-        width: 13,
 
-    },
-    label: {
-        margin: 10,
-        width: '80%'
-
-    },
     innerText: {
         color: "#71A8E8",
     }, inputinterno: {

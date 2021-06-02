@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
 import Cadastro from '../cadastro';
 
-import {Ionicons} from '@expo/vector-icons'
+import {Ionicons} from '@expo/vector-icons';
 
 
 import { url_api } from "../../utils/constants";
@@ -16,6 +16,7 @@ const Login = ({navigation}) => {
     const [password, setPassword] = useState('');
 
     const Logar =()=>{
+
         const body ={
             cellphoneNumber: cellphoneNumber,
             password: password,
@@ -47,14 +48,14 @@ const Login = ({navigation}) => {
          })
      }
     
-
+     
 
    const Cadastro =()=>{
-       navigation.navigate('Cadastrar')
+       navigation.navigate('cadastro')
    }
 
    const EsqueciSenha =()=>{
-    navigation.navigate('EsqueciSenha')
+    navigation.navigate('esquecisenha')
 }
 
     return(
@@ -63,7 +64,7 @@ const Login = ({navigation}) => {
             
         <Image
             style={styles.logo}
-            source={require('../../assets/logo.jpeg')}
+            source={require('../../assets/logo.png')}
         />
          
         <View>
