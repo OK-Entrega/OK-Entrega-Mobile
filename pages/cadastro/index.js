@@ -27,7 +27,7 @@ const Cadastro = ({ navigation }) => {
             mesmasenha: mesmasenha
 
         }
-        fetch(`${url_api}/users/signup/deliverer`, {
+        fetch(`${url_api}/account/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,17 +36,20 @@ const Cadastro = ({ navigation }) => {
         })
             .then(response => response.json())
             .then(data => {
-                if (data.sucesso) {
+                console.log(data)
+                if (data.success) {
                     Toast.show({
-                        text1: data.mensagem,
+                        text1: data.message,
                         text2: "",
                         type: "success"
                     });
-                    save_token(data.dados)
-                    navigation.push('Autenticado')
+                    save_token(data.data)
+                    setTimeout(() => {
+                        navigation.push('login')
+                    }, 1000)
                 } else {
                     Toast.show({
-                        text1: data.mensagem,
+                        text1: data.message,
                         text2: "",
                         type: "error"
                     });
@@ -129,7 +132,7 @@ const Cadastro = ({ navigation }) => {
                     onChangeText={text => setMesmaSenha(text)}
                     value={mesmasenha}
                     secureTextEntry={true}
-                    placeholder="confirme sua senha"
+                    placeholder="Confirme sua senha"
                     placeholderTextColor="black"
 
                 />
@@ -201,7 +204,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
     }, logo: {
         width: 160,
-        height: 150
+        height: 150,
+        zIndex: -100
     }, checkboxContainer: {
         flexDirection: "row",
         marginBottom: 20,

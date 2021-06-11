@@ -21,7 +21,7 @@ const Login = ({navigation}) => {
             cellphoneNumber: cellphoneNumber,
             password: password,
         }
-        fetch(`${url_api}/users/signin/deliverer`,{
+        fetch(`${url_api}/account/signin`,{
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json'
@@ -30,17 +30,20 @@ const Login = ({navigation}) => {
          })
          .then(response => response.json())
          .then(data => {
-            if (data.sucesso) {
+             console.log(data)
+            if (data.success) {
                 Toast.show({
-                    text1: data.mensagem,
+                    text1: data.message,
                     text2: "",
                     type: "success"
                 });
-                save_token(data.dados)
-                navigation.push('Autenticado')
+                save_token(data.data)
+                setTimeout(() => {
+                    navigation.push('home')
+                }, 1000)
             } else {
                 Toast.show({
-                    text1: data.mensagem,
+                    text1: data.message,
                     text2: "",
                     type: "error"
                 });
@@ -184,7 +187,8 @@ const styles = StyleSheet.create({
         width: '90%'
     }, logo : {
         width: 160,
-        height: 150
+        height: 150,
+        zIndex: -100
     }, inputinterno: {
         width: '90%'
     },
