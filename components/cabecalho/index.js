@@ -1,8 +1,9 @@
-import React from "react";
-import {  View, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React, {useState} from "react";
+import {  View, Image, StyleSheet, TouchableOpacity, Modal } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
 
 const Cabecalho =()=>{
+
     return(
         <View style={styles.nav}>
 
@@ -17,11 +18,14 @@ const Cabecalho =()=>{
                     source={require('../../assets/logo.png')}
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity >
                 <Ionicons
                     name="ellipsis-vertical-outline"  color='white' size={25}
                 />
             </TouchableOpacity>
+
+            
+            
 
         </View>
 

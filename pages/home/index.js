@@ -5,20 +5,29 @@ import {Ionicons} from '@expo/vector-icons'
 import Cabecalho from "../../components/cabecalho";
 
 
+
 const Home =({navigation})=>{
+
+    const ImagemCamera =()=>{
+        navigation.navigate('entregas')
+    }
+    
     return(
 
    <View style={styles.container}>
             
     <Cabecalho/>
 
+     {/* linha verde do cabecalho*/}
      <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
 
-    
+        {/* view para determinar o comportamento dos botoes */}
        <View style={{ flex: 1, backgroundColor: '#F7F7F7',
       alignItems: 'center', justifyContent: 'space-evenly'}}>
 
-        <TouchableOpacity style={[styles.botaoo, {backgroundColor: "#2ECC71"}]}>
+          {/* Começo dos botoes */}
+        <TouchableOpacity onPress={() => ImagemCamera()}
+         style={[styles.botaoo, {backgroundColor: "#2ECC71"}]}>
             <Text style={styles.texttouch}>Entrega</Text>
             <Ionicons
                name="checkbox-outline" color='white' size={25}
@@ -59,6 +68,7 @@ const Home =({navigation})=>{
              name="reload-outline" color='white' size={25}
             />
         </TouchableOpacity>
+        {/* fim dos botoes */}
 
         </View>
 
