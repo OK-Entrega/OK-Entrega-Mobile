@@ -8,19 +8,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
 //telas
-import Login from './pages/login';
-import Cadastro from './pages/cadastro';
-import EsqueciSenha from './pages/esquecisenha';
+import Login from './pages/cadastrar/login';
+import Cadastro from './pages/cadastrar/cadastro';
+import EsqueciSenha from './pages/cadastrar/esquecisenha';
 import Home from './pages/home';
 import Perfil from './pages/perfil';
-import ImagemCamera from './pages/entregas/entrega';
-import DigitarCode from './pages/digitarcodbarra';
-import DataeHora from './pages/dataehora';
-import FotoCanhoto from './pages/fotocanhoto';
-import FotoCanhoto2 from './pages/fotocanhoto2';
-import FotoDosProdutos from './pages/fotodosprodutos';
-import FotoDosProdutos2 from './pages/fotodosprodutos2';
-import FotoDaEntrega from './pages/fotodaentrega';
+import ImagemCamera from './pages/entrega/entregas/entrega';
+import DigitarCode from './pages/entrega/digitarcodbarra';
+import DataeHora from './pages/entrega/dataehora';
+import FotoCanhoto from './pages/entrega/fotocanhoto';
+import FotoCanhoto2 from './pages/entrega/fotocanhoto2';
+import FotoDosProdutos from './pages/entrega/fotodosprodutos';
+import FotoDosProdutos2 from './pages/entrega/fotodosprodutos2';
+import FotoDaEntrega from './pages/entrega/fotodaentrega';
+import Historico from './pages/historico';
+import Canhoto from './pages/canhotos/canhoto';
+import Confirma from './pages/entrega/confirma';
+
 
 
 
@@ -53,34 +57,11 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                
-            <Stack.Screen name="login" component={Login} />
-            <Stack.Screen name="cadastro" component={Cadastro} />
-            <Stack.Screen name="esquecisenha" component={EsqueciSenha} />
-            <Stack.Screen name="perfil" component={Perfil} />
-             <Stack.Screen name="home" component={Home} />
-             <Stack.Screen name="entregas" component={ImagemCamera} />
-             <Stack.Screen name="digitarcodbarra" component={DigitarCode} /> 
-             <Stack.Screen name="dataehora" component={DataeHora} /> 
-             <Stack.Screen name="fotocanhoto" component={FotoCanhoto} /> 
-             <Stack.Screen name="fotocanhoto2" component={FotoCanhoto2} />
-             <Stack.Screen name="fotodosprodutos" component={FotoDosProdutos}/>
-             <Stack.Screen name="fotodosprodutos2" component={FotoDosProdutos2}/>
-             <Stack.Screen name="fotodaentrega" component={FotoDaEntrega}/>
-
+           
+             <Stack.Screen name="login" component={Login} />
+             <Stack.Screen name="esquecisenha" component={EsqueciSenha} />
+             <Stack.Screen name="cadastro" component={Cadastro} />
              
-
-
-             
-
-              
-
-
-
-
-             
-
-             
-            
    
             </Stack.Navigator>
         </NavigationContainer>

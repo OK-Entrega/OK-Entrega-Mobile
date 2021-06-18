@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
-import Cabecalho from '../../components/cabecalho';
+import Cabecalho from '../../../components/cabecalho';
 import {Ionicons} from '@expo/vector-icons'
 import { TextInput } from 'react-native-gesture-handler';
 
@@ -64,7 +64,7 @@ const DataeHora = ({navigation}) =>{
     >
         <Image                   
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
         />
      </TouchableOpacity>
         </View>

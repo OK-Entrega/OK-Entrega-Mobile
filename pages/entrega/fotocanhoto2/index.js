@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
 import { Camera } from 'expo-camera';
-import Cabecalho from '../../components/cabecalho';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDaEntrega = ({navigation}) =>{
+const FotoCanhoto2 = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -65,14 +64,14 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto da entrega (opcional)</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Fotografe o canhoto da nota</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
         >
         <Image
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
         />
         </TouchableOpacity>
         </View>
@@ -131,6 +130,11 @@ const tirarFoto = async ()=>{
     </View>
   );
  
+   
+  
+    
+  
+
 
 }
 
@@ -153,4 +157,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDaEntrega;
+export default FotoCanhoto2;

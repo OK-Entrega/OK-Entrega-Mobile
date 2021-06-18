@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
 import { Camera } from 'expo-camera';
-import Cabecalho from '../../components/cabecalho';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+
+const ImagemCamera = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -39,10 +39,6 @@ const tirarFoto = async ()=>{
     setImagemUri(foto.uri);
     
   }
-
-  const Confirmar=()=>{
-
-  }
   
   CancelarCode = async ()=>{
     if (camera){
@@ -65,14 +61,14 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Confirme a foto dos produtos</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Escaneie o código de barras</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
         >
         <Image
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
         />
         </TouchableOpacity>
         </View>
@@ -86,12 +82,8 @@ const tirarFoto = async ()=>{
          camera = ref;
        }}>
        
-        {imagemUri && 
-        <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> 
-        }
-
-        
-
+       
+        {imagemUri && <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> }
         
 
 
@@ -109,28 +101,18 @@ const tirarFoto = async ()=>{
     </TouchableOpacity>
 
     <TouchableOpacity  
-    style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    >
-
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
-    </TouchableOpacity>
-
-
-    <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
-    
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Tirar outra </Text>
-    </TouchableOpacity>
+    onPress={() => DigitarCode()}>
 
-        
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Digitar código</Text>
+    </TouchableOpacity>
 
     </View>
 
     </View>
   );
- 
+
 
 }
 
@@ -153,4 +135,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default ImagemCamera;

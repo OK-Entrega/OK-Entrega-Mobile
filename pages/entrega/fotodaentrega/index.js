@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
 import { Camera } from 'expo-camera';
-import Cabecalho from '../../components/cabecalho';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+const FotoDaEntrega = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -65,14 +64,14 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Confira a foto dos produtos</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto da entrega (opcional)</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
         >
         <Image
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
         />
         </TouchableOpacity>
         </View>
@@ -121,7 +120,7 @@ const tirarFoto = async ()=>{
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     onPress={()=>CancelarCode()}>
     
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Tirar outra</Text>
     </TouchableOpacity>
 
         
@@ -153,4 +152,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default FotoDaEntrega;

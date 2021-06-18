@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
-import Cabecalho from '../../components/cabecalho';
 import {Ionicons} from '@expo/vector-icons'
 import { TextInput } from 'react-native-gesture-handler';
 import DataeHora from '../dataehora';
@@ -42,7 +41,7 @@ const DigitarCode = ({navigation}) =>{
         <Image
                         
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
         />
      </TouchableOpacity>
 

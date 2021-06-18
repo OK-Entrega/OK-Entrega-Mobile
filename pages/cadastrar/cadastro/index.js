@@ -4,8 +4,8 @@ import Login from '../login';
 // Storage
 //icons
 import { Ionicons } from '@expo/vector-icons'
-import { url_api } from "../../utils/constants";
-import {save_token} from "../../utils/save-token";
+import { url_api } from "../../../utils/constants";
+import {save_token} from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
 
 
@@ -69,7 +69,7 @@ const Cadastro = ({ navigation }) => {
 
             <Image
                 style={styles.logo}
-                source={require('../../assets/logo.png')}
+                source={require('../../../assets/logo.png')}
             />
 
 

@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Button} from 'react-native';
 import Cadastro from '../cadastro';
-
 import {Ionicons} from '@expo/vector-icons';
 
-
-import { url_api } from "../../utils/constants";
-import {save_token} from "../../utils/save-token";
+import { url_api } from "../../../utils/constants";
+import {save_token} from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
+import { TextInputMask } from 'react-native-masked-text'
 
 const Login = ({navigation}) => {
 
@@ -63,11 +62,11 @@ const Login = ({navigation}) => {
 
     return(
         <View style={styles.container}>
-<Toast ref={(ref) => Toast.setRef(ref)} />
+        <Toast ref={(ref) => Toast.setRef(ref)} />
             
         <Image
             style={styles.logo}
-            source={require('../../assets/logo.png')}
+            source={require('../../../assets/logo.png')}
         />
          
         <View>
@@ -75,13 +74,18 @@ const Login = ({navigation}) => {
                 Entrar
             </Text>
         </View>
-
-        <View style={styles.input}>
+  
+        <View style={{width: '90%',justifyContent: 'flex-start'}}>
+        <Text >Digite seu numero de telefone</Text>
+        </View>
+        
+    <View style={styles.input}>
+      
         <TextInput
                 style={styles.inputinterno}
                 onChangeText={text => setCellphoneNumber(text)}
                 value={cellphoneNumber}
-                placeholder="Digite seu numero de telefone"
+                placeholder="telefone"
                 placeholderTextColor ="black"
 
          />
@@ -91,7 +95,11 @@ const Login = ({navigation}) => {
                 />
          </TouchableOpacity>
 
-        </View>   
+    </View>   
+
+    <View style={{width: '90%',justifyContent: 'flex-start', paddingTop: 15}}>
+        <Text >Digite seu numero de telefone</Text>
+    </View>
 
         <View style={styles.input}>
             <TextInput
@@ -99,20 +107,16 @@ const Login = ({navigation}) => {
             onChangeText={text => setPassword(text)}
             value={password}
             secureTextEntry={true}
-            placeholder="Digite sua senha"
+            placeholder="senha"
             placeholderTextColor ="black"
             />
-         <TouchableOpacity>
+           <TouchableOpacity>
                 <Ionicons
                 name='lock-closed-outline' color='green' size={25}
                 />
-         </TouchableOpacity>
-
+           </TouchableOpacity>
         </View>           
-
-        
-            
-            
+ 
 
             <Text
             style={styles.esqueci}
@@ -146,10 +150,10 @@ const Login = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#F7F7F7',
-      alignItems: 'center',
-      justifyContent: 'center',
+        flex: 1,
+        backgroundColor: '#F7F7F7',
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     input : {
         width: '90%',
