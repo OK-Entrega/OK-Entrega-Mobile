@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+const FotoDosProdutoDev = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -15,7 +15,7 @@ const FotoDosProdutos = ({navigation}) =>{
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
-  }, []);
+  }, []); 
 
   if (hasPermission === null) {
     return <View />;
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default FotoDosProdutoDev;

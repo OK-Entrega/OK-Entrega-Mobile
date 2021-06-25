@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
+
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const DataeHora = ({navigation}) =>{
+const DataHoraOcorrencia = ({navigation}) =>{
  const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('datetime');
   const [show, setShow] = useState(false);
@@ -52,7 +53,7 @@ const DataeHora = ({navigation}) =>{
                 />
         </TouchableOpacity>
 
-        <Text style={styles.textodbutton}> Selecione data e hora da entrega</Text>
+        <Text style={styles.textodbutton}> Selecione data e hora da ocorrência</Text>
 
     <TouchableOpacity
     onPress={() => Home()}
@@ -69,7 +70,7 @@ const DataeHora = ({navigation}) =>{
 
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
-      <Text style={{fontSize: 24}}>Data e hora da entrega *</Text>
+      <Text style={{fontSize: 24}}>Data e hora da ocorrência *</Text>
 
             <View style={{flexDirection: 'row', margin: 5,width: '60%',  justifyContent: 'space-around'}}>
 
@@ -167,4 +168,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default DataeHora;
+export default DataHoraOcorrencia;

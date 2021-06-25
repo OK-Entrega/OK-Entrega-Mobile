@@ -1,15 +1,28 @@
 import React, { useState } from "react";
-import {  View, Image, Text, StyleSheet, TouchableOpacity, Alert, Modal, Pressable, } from 'react-native';
+import {  View,  StyleSheet, TouchableOpacity,} from 'react-native';
 
 import {Ionicons} from '@expo/vector-icons'
 import Cabecalho from "../../components/cabecalho";
+import Historico from "../historico";
+
+import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+
 
 
 
 const Home =({navigation})=>{
+   
 
     const ImagemCamera =()=>{
         navigation.navigate('entregas')
+    }
+
+    const Historico =()=>{
+        navigation.navigate('historico')
+    }
+
+    const Canhoto =()=>{
+        navigation.navigate('canhoto')
     }
     
     return(
@@ -20,6 +33,7 @@ const Home =({navigation})=>{
 
      {/* linha verde do cabecalho*/}
      <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
+
 
         {/* view para determinar o comportamento dos botoes */}
        <View style={{ flex: 1, backgroundColor: '#F7F7F7',
@@ -35,7 +49,8 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={[styles.botaoo, {backgroundColor: "#3071D3"}]}>
+        <TouchableOpacity onPress={()=>Canhoto()}
+         style={[styles.botaoo, {backgroundColor: "#3071D3"}]}>
             <Text style={styles.texttouch}>Canhoto</Text>
             <Ionicons
              name="document-text-outline" color='white' size={25}
@@ -43,7 +58,7 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity
+        <TouchableOpacity 
         style={[styles.botaoo, {backgroundColor: '#F29035'}]} >
             <Text style={styles.texttouch}>Ocorrência</Text>
             <Ionicons
@@ -52,7 +67,7 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity
+        <TouchableOpacity 
         style={[styles.botaoo, {backgroundColor: '#E92525'}]}>
             <Text style={styles.texttouch}>Devolução</Text>
             <Ionicons
@@ -61,7 +76,7 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity
+        <TouchableOpacity onPress={()=>Historico()}
         style={[styles.botaoo, {backgroundColor: '#000000'}]}>
             <Text style={styles.texttouch}>Historico</Text>
             <Ionicons
@@ -69,6 +84,8 @@ const Home =({navigation})=>{
             />
         </TouchableOpacity>
         {/* fim dos botoes */}
+
+        
 
         </View>
 

@@ -1,17 +1,58 @@
-import React from 'react';
-import { View, Image, StyleSheet, Text, Header } from 'react-native';
+import React, {useState} from 'react';
+import { View, Image, StyleSheet, Text, Header, TouchableOpacity } from 'react-native';
+import Cabecalho from '../../components/cabecalho';
+import {Ionicons} from '@expo/vector-icons';
+
+
+
+const Perfil = () => {
+ 
+
+
+  return (
+    
+    
+    <View style={{flex: 1}}>
+
+      <Cabecalho />
+    
+      <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
+
+      <Text style={{fontSize: 45, color:"black", justifyContent:'center', textAlign: 'center', fontWeight: 'bold', paddingTop: 30  }}>Meu Perfil</Text>
+
+    <View style={{flex: 1, justifyContent: 'center' }} >
+
+    <View style={{flexDirection:'row', alignItems: 'center', justifyContent: 'space-evenly', paddingBottom: 25}}>
+    <Image
+      style={styles.stretch}
+      source={require('../../assets/user.png')}
+      />
+      <Text>USUARIO: {()=>NomeUser()} </Text>
+    </View>
+
+    <View style={{paddingLeft: 15, flexDirection: 'row'}}>
+        <TouchableOpacity>
+        <Ionicons name="phone-portrait-outline" color='#2DCC70' size={25} />
+        </TouchableOpacity>
+        <Text>Numero: </Text>
+        <Text>11947019825</Text>
+    </View>
+     
+      </View>
+      </View>
+  );
+}
+
 
 const styles = StyleSheet.create({
 
  
 
-  container: {
-    paddingTop: 50,
-  },
+
   stretch: {
-    width: 120,
-    height: 120,
-    resizeMode: 'stretch',
+    width: 80,
+    height: 80,
+   
   },
 
   text: {
@@ -20,58 +61,5 @@ const styles = StyleSheet.create({
   }
 });
 
-
-const Perfil = () => {
-  return (
-    
-    
-
-    <View >
-
-
-
-     {/* Título meu Perifl */}
-      <Text style={{fontSize: 45, color:"black", paddingLeft:101, marginTop: 100 }}>Meu Perfil</Text>
-
-
-      {/* início Imgagem do perfil */}
-      <View  style={{ flexDirection: 'row', alignItems:'center',  justifyContent: 'center' ,marginTop:100}}>
-
-    <Image
-      style={styles.stretch}
-      source={require('../../assets/user.png')}
-      />
-    <Text style={{paddingLeft:10, fontSize: 20, color:"black", fontWeight: "bold"}}>Pedro da Cunha</Text>
-    </View>
-
-     {/* Fim Imgagem do perfil */}
-
-      <View  style={{ flexDirection: 'row' ,marginTop:100, marginLeft:30}}>
-    <Image
-      style={{width:27, height:27}}
-      source={require('../../assets/splash.png')}
-      />
-     
-    <Text style={{paddingLeft:10, fontSize: 20, color:"black", fontWeight: "bold"}}>Número</Text>
-    </View>
-          <Text style={{paddingLeft:66, fontSize: 13, color:"black", }} >11 9974471331</Text>
-           {/* Fim Número */}
-
-         {/* Inicio botão histórico */}
-      <View  style={{ flexDirection: 'row' ,marginTop:40, marginLeft:30}}>
-    <Image
-      style={{width:27, height:27}}
-      source={require('../../assets/icon.png')}
-      />
-    <Text style={{paddingLeft:10, fontSize: 20, color:"black", fontWeight: "bold"}}>Ver histórico</Text>
-    </View>
-    {/* Fim botão histórico */}
-          
-     
-  
-
-      </View>
-  );
-}
 
 export default Perfil;

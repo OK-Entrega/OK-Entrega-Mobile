@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
+import { StyleSheet, Text, View,  TouchableOpacity, Image} from 'react-native';
 import Cadastro from '../cadastro';
 
 import {Ionicons} from '@expo/vector-icons'
 import Login from '../login';
 
+import { TextInput } from 'react-native-paper';
 
 const EsqueciSenha =({navigation})=>{
     const [esquecisenha, setEsqueciSenha] = useState('');
@@ -55,22 +56,23 @@ const EsqueciSenha =({navigation})=>{
             </Text>
         </View>
 
-        <View style={styles.input}>
         <TextInput
-                style={styles.inputinterno}
+                style={{width: '90%'}}
+                mode ="outlined"
+                underlineColor= '#2ECC71'
+                label="Digite seu numero de telefone"
+                right={<TextInput.Affix text="/100" />}
+                outlineColor = '#2ECC71'
+                selectionColor = '#2ECC71'
+                borderColor = '#2ECC71'
+                color = '#2ECC71'
                 onChangeText={text => setEsqueciSenha(text)}
                 value={esquecisenha}
-                placeholder="Digite seu numero de telefone"
-                placeholderTextColor ="black"
+                
 
          />
-         <TouchableOpacity>
-                <Ionicons
-                name="phone-portrait-outline"  color='green' size={25}
-                />
-         </TouchableOpacity>
 
-        </View>   
+        
         <Text style={{width: '90%', padding: 6, color: 'grey'}}>
         Um SMS com mais instruções será enviado para o seu número.
         </Text>
@@ -107,10 +109,10 @@ const EsqueciSenha =({navigation})=>{
     }
     const styles = StyleSheet.create({
         container: {
-          flex: 1,
-          backgroundColor: '#F7F7F7',
-          alignItems: 'center',
-          justifyContent: 'center',
+            flex: 1,
+            backgroundColor: '#F7F7F7',
+            alignItems: 'center',
+            paddingTop: '22%'
         },
         input : {
             width: '90%',

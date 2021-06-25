@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Button} from 'react-native';
+import { StyleSheet, Text, View,  TouchableOpacity, Image, Button} from 'react-native';
 import Cadastro from '../cadastro';
 import {Ionicons} from '@expo/vector-icons';
-
 import { url_api } from "../../../utils/constants";
 import {save_token} from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
-import { TextInputMask } from 'react-native-masked-text'
 
+import { TextInput } from 'react-native-paper';
+import { color } from 'react-native-reanimated';
 const Login = ({navigation}) => {
 
     
@@ -75,48 +75,47 @@ const Login = ({navigation}) => {
             </Text>
         </View>
   
-        <View style={{width: '90%',justifyContent: 'flex-start'}}>
-        <Text >Digite seu numero de telefone</Text>
-        </View>
         
-    <View style={styles.input}>
+        <View style={{width: '90%', height: '16%' , justifyContent: 'space-around'}}>
+
+        
+    
       
         <TextInput
-                style={styles.inputinterno}
+                
+                mode ="outlined"
+                underlineColor= '#2ECC71'
+                label="Digite seu numero de telefone"
+                right={<TextInput.Affix text="/100" />}
+                outlineColor = '#2ECC71'
+                selectionColor = '#2ECC71'
+                borderColor = '#2ECC71'
+                color = '#2ECC71'
                 onChangeText={text => setCellphoneNumber(text)}
                 value={cellphoneNumber}
-                placeholder="telefone"
-                placeholderTextColor ="black"
+                
 
          />
-         <TouchableOpacity>
-                <Ionicons
-                name="phone-portrait-outline"  color='green' size={25}
-                />
-         </TouchableOpacity>
 
-    </View>   
+  
 
-    <View style={{width: '90%',justifyContent: 'flex-start', paddingTop: 15}}>
-        <Text >Digite seu numero de telefone</Text>
-    </View>
-
-        <View style={styles.input}>
-            <TextInput
-            style={styles.inputinterno}
+    
+        
+            <TextInput 
+            backgroundColor='#2ECC71'
             onChangeText={text => setPassword(text)}
             value={password}
             secureTextEntry={true}
-            placeholder="senha"
-            placeholderTextColor ="black"
+            mode="outlined"
+            label="Digite sua senha"
+            outlineColor = '#2ECC71'
+            selectionColor = '#2ECC71'
+            right={<TextInput.Affix text="/100" />}
+            
             />
-           <TouchableOpacity>
-                <Ionicons
-                name='lock-closed-outline' color='green' size={25}
-                />
-           </TouchableOpacity>
-        </View>           
+                  
  
+        </View>
 
             <Text
             style={styles.esqueci}
@@ -153,19 +152,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7F7F7',
         alignItems: 'center',
-        justifyContent: 'center'
-    },
-    input : {
-        width: '90%',
-        height: 50, 
-        borderColor: '#2ECC71', 
-        borderWidth: 1,
-        borderRadius: 6,
-        padding: 10,
-        marginTop: 10,
-        color: 'black',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
+        paddingTop: '22%'
+        
         
     },
     button : {
@@ -182,20 +170,21 @@ const styles = StyleSheet.create({
     buttonText : {
         color : 'white',
         fontSize: 25,
-    },
-    innerText : {
-        color: "#71A8E8",
+   
     }, esqueci : {
         color: "#71A8E8", 
         margin: 10,
-        width: '90%'
+        width: '90%',
+        paddingTop: 12
     }, logo : {
         width: 160,
         height: 150,
         zIndex: -100
     }, inputinterno: {
         width: '90%'
-    },
+    },innerText: {
+        color: "#71A8E8",
+     }
 
     
 });

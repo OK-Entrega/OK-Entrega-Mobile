@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
+
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-const DataeHora = ({navigation}) =>{
+const DataHoraDevolucao = ({navigation}) =>{
  const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('datetime');
   const [show, setShow] = useState(false);
@@ -167,4 +168,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default DataeHora;
+export default DataHoraDevolucao;

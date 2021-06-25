@@ -13,14 +13,24 @@ const DATA = [
     
   ];
 
+ 
+
+  const FotoCanNota =()=>{
+    navigation.navigate('fotocannota')
+}
+ 
+
   const Item = ({ title }) => (
+    
       <View>
        <View style={styles.item}>
       <Text style={{fontSize: 30}}>YPE</Text>
       <Text style={styles.title2}>{title}</Text>
       <Text>Você tem um canhoto pendente para essa empresa</Text>
       <View style={{alignItems: 'center', paddingTop: 8}}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity   
+      style={styles.button}
+      onPress={() =>  FotoCanNota ()}>
       Enviar canhoto
       </TouchableOpacity>
       </View>
@@ -39,6 +49,8 @@ const DATA = [
 
 
 const Canhoto =({navigation})=>{  
+
+  
     return(
 
    <View style={styles.container}>
@@ -90,6 +102,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingTop: 30, 
         fontFamily: 'Segoe UI', 
+        fontWeight: 'bold'
         
     },item: {
         padding: 20,

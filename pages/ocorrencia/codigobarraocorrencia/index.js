@@ -4,7 +4,8 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+
+const CodigoBarraOcorrencia = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -38,10 +39,6 @@ const tirarFoto = async ()=>{
     setImagemUri(foto.uri);
     
   }
-
-  const Confirmar=()=>{
-
-  }
   
   CancelarCode = async ()=>{
     if (camera){
@@ -64,7 +61,7 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto dos produtos (opcional)</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Escaneie o código de barras</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
@@ -85,12 +82,8 @@ const tirarFoto = async ()=>{
          camera = ref;
        }}>
        
-        {imagemUri && 
-        <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> 
-        }
-
-        
-
+       
+        {imagemUri && <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> }
         
 
 
@@ -108,28 +101,18 @@ const tirarFoto = async ()=>{
     </TouchableOpacity>
 
     <TouchableOpacity  
-    style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    >
-
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
-    </TouchableOpacity>
-
-
-    <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
-    
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
-    </TouchableOpacity>
+    onPress={() => DigitarCode()}>
 
-        
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Digitar código</Text>
+    </TouchableOpacity>
 
     </View>
 
     </View>
   );
- 
+
 
 }
 
@@ -152,4 +135,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default CodigoBarraOcorrencia;

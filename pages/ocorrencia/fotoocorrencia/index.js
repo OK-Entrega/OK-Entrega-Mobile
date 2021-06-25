@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+const FotoOcorrencia = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -15,7 +15,7 @@ const FotoDosProdutos = ({navigation}) =>{
       const { status } = await Camera.requestPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
-  }, []);
+  }, []); 
 
   if (hasPermission === null) {
     return <View />;
@@ -64,7 +64,7 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto dos produtos (opcional)</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto da ocorrência (opcional)</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
@@ -111,7 +111,7 @@ const tirarFoto = async ()=>{
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     >
 
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Tirar foto</Text>
     </TouchableOpacity>
 
 
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default FotoOcorrencia;

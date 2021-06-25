@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+const FotoDosProdutosDev2 = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -64,7 +64,7 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto dos produtos (opcional)</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Confirme a foto dos produtos</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
@@ -111,7 +111,7 @@ const tirarFoto = async ()=>{
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     >
 
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>prosseguir</Text>
     </TouchableOpacity>
 
 
@@ -120,7 +120,7 @@ const tirarFoto = async ()=>{
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     onPress={()=>CancelarCode()}>
     
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Tirar outra </Text>
     </TouchableOpacity>
 
         
@@ -152,4 +152,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default FotoDosProdutosDev2;

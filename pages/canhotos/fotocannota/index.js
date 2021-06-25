@@ -4,7 +4,7 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
-const FotoDosProdutos = ({navigation}) =>{
+const FotoCanNota = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
@@ -24,9 +24,7 @@ const FotoDosProdutos = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
-  }
+  
 
   const Home =()=>{
     navigation.navigate('home')
@@ -39,9 +37,7 @@ const tirarFoto = async ()=>{
     
   }
 
-  const Confirmar=()=>{
-
-  }
+ 
   
   CancelarCode = async ()=>{
     if (camera){
@@ -64,7 +60,7 @@ const tirarFoto = async ()=>{
                 />
         </TouchableOpacity>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto dos produtos (opcional)</Text>
+        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}>Fotografe o canhoto da nota</Text>
 
         <TouchableOpacity
         onPress={() => Home()}
@@ -89,9 +85,6 @@ const tirarFoto = async ()=>{
         <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> 
         }
 
-        
-
-        
 
 
       </Camera>
@@ -107,20 +100,14 @@ const tirarFoto = async ()=>{
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
     </TouchableOpacity>
 
+   
+
     <TouchableOpacity  
+
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    >
-
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
-    </TouchableOpacity>
-
-
-    <TouchableOpacity  
-
-    style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
+    onPress={()=>tirarFoto()}>
     
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Tirar foto</Text>
     </TouchableOpacity>
 
         
@@ -152,4 +139,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default FotoDosProdutos;
+export default FotoCanNota;

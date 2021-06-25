@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, CheckBox, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, CheckBox, Text, View,  TouchableOpacity, Image } from 'react-native';
 import Login from '../login';
 // Storage
 //icons
@@ -8,14 +8,15 @@ import { url_api } from "../../../utils/constants";
 import {save_token} from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
 
+import { TextInput } from 'react-native-paper';
+
 
 const Cadastro = ({ navigation }) => {
 
     const [cellphoneNumber, setCellphoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    const [mesmasenha, setMesmaSenha] = useState('');
-    const [isSelected, setSelection] = useState('');
+    
 
 
     const Cadastrar = () => {
@@ -80,72 +81,59 @@ const Cadastro = ({ navigation }) => {
             </View>
 
 
-            <View style={styles.input}>
-                <TextInput
-                    style={styles.inputinterno}
-                    onChangeText={text => setName(text)}
-                    value={name}
-                    placeholder="Digite seu nome"
-                    placeholderTextColor="black"
-                />
-                <TouchableOpacity>
-                    <Ionicons
-                        name="person-outline" color='green' size={25}
-                    />
-                </TouchableOpacity>
-            </View>
+            
 
-            <View style={styles.input}>
-                <TextInput
-                    style={styles.inputinterno}
+            <TextInput
+                style={{width: '90%'}}
+                mode ="outlined"
+                underlineColor= '#2ECC71'
+                label="Digite seu nome"
+                right={<TextInput.Affix text="/100" />}
+                outlineColor = '#2ECC71'
+                selectionColor = '#2ECC71'
+                borderColor = '#2ECC71'
+                color = '#2ECC71'
+                onChangeText={text => setName(text)}
+                value={name}
+                
+
+         />
+
+    <TextInput
+                    style={{width: '90%'}}
+                    mode ="outlined"
+                    underlineColor= '#2ECC71'
+                    label="Digite seu numero de telefone"
+                    right={<TextInput.Affix text="/100" />}
+                    outlineColor = '#2ECC71'
+                    selectionColor = '#2ECC71'
+                    borderColor = '#2ECC71'
+                    color = '#2ECC71'
                     onChangeText={text => setCellphoneNumber(text)}
                     value={cellphoneNumber}
-                    placeholder="Digite seu numero de telefone"
-                    placeholderTextColor="black"
-                />
-                <TouchableOpacity>
-                    <Ionicons
-                        name="phone-portrait-outline" color='green' size={25}
-                    />
-                </TouchableOpacity>
-            </View>
+                    
 
-            <View style={styles.input}>
-                <TextInput
-                    style={styles.inputinterno}
-                    onChangeText={text => setPassword(text)}
-                    value={password}
-                    secureTextEntry={true}
-                    placeholder="Digite sua senha"
-                    placeholderTextColor="black"
-                />
-                <TouchableOpacity>
-                    <Ionicons
-                        name="lock-closed-outline" color='green' size={25}
-                    />
-                </TouchableOpacity>
-            </View>
+            />
 
-            <View style={styles.input}>
-                <TextInput
-                    style={styles.inputinternoo}
-                    onChangeText={text => setMesmaSenha(text)}
-                    value={mesmasenha}
-                    secureTextEntry={true}
-                    placeholder="Confirme sua senha"
-                    placeholderTextColor="black"
+        <TextInput
+                            style={{width: '90%'}}
+                            mode ="outlined"
+                            underlineColor= '#2ECC71'
+                            label="Digite sua senha"
+                            right={<TextInput.Affix text="/100" />}
+                            outlineColor = '#2ECC71'
+                            selectionColor = '#2ECC71'
+                            borderColor = '#2ECC71'
+                            color = '#2ECC71'
+                            onChangeText={text => setPassword(text)}
+                            value={password}
+                            secureTextEntry={true}
+                            value={password}
+                            
 
-                />
-                <TouchableOpacity style={{ flexDirection: 'row' }}>
-                    <Ionicons
-                        name="checkmark-outline" color='green' size={25}
                     />
 
-                    <Ionicons
-                        name="lock-closed-outline" color='green' size={25}
-                    />
-                </TouchableOpacity>
-            </View>
+    
 
             <TouchableOpacity
                 style={styles.button}
@@ -174,7 +162,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F7F7F7',
         alignItems: 'center',
-        justifyContent: 'center',
+        paddingTop: '22%'
     },
     input: {
         width: '90%',

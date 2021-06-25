@@ -6,7 +6,7 @@ import {Ionicons} from '@expo/vector-icons'
 const Home =()=>{
     Navigator.navigation('home')
 }
-const Confirma = ({navigation}) =>{
+const ConfirmaDevolucao = ({navigation}) =>{
   
 
   return (
@@ -39,7 +39,7 @@ const Confirma = ({navigation}) =>{
      
 
      <Text style={{fontSize: '50%' ,fontFamily: 'Segoe UI', textAlign: 'center'}}>
-     Entrega confirmada com sucesso!
+     Devolução confirmada com sucesso!
      </Text>
 
     </View>
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default Confirma;
+export default ConfirmaDevolucao;

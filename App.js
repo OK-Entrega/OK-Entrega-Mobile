@@ -24,6 +24,25 @@ import FotoDaEntrega from './pages/entrega/fotodaentrega';
 import Historico from './pages/historico';
 import Canhoto from './pages/canhotos/canhoto';
 import Confirma from './pages/entrega/confirma';
+import FotoCanNota from './pages/canhotos/fotocannota';
+import FotoCanNota2 from './pages/canhotos/fotocannota2';
+import ConfirmarCanhoto from './pages/canhotos/confirmarcanhoto';
+import CodigoBarras from './pages/devolucao/codigobarra';
+import DigitarCodigo from './pages/devolucao/digitarcodigo';
+import DataHoraDevolucao from './pages/devolucao/datahoradevolucao';
+import FotoDosProdutoDev from './pages/devolucao/fotoprodutodev';
+import FotoDosProdutosDev2 from './pages/devolucao/fotoprodutodev2';
+import DescricaoProblema from './pages/devolucao/descricaoproblema';
+import DescricaoProblema2 from './pages/devolucao/descricaoproblema2';
+import MotivoDevolucao from './pages/devolucao/motivodevolucao';
+import ConfirmaDevolucao from './pages/devolucao/confirmadevolucao';
+import CodigoBarraOcorrencia from './pages/ocorrencia/codigobarraocorrencia';
+import DigiteCodigoOcorrencia from './pages/ocorrencia/digitecodigoocorrencia';
+import DataHoraOcorrencia from './pages/ocorrencia/datahoraocorrencia';
+import FotoOcorrencia from './pages/ocorrencia/fotoocorrencia';
+import FotoOcorrencia2 from './pages/ocorrencia/fotoocorrencia2';
+import MotivoOcorrencia from './pages/ocorrencia/motivoocorrencia';
+import OcorrenciaConfirmacao from './pages/ocorrencia/ocorrenciaconfirmacao';
 
 
 
@@ -57,12 +76,15 @@ export default function App() {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                
+        
+
+            <Stack.Screen name="perfil" component={Perfil} />
            
-             <Stack.Screen name="login" component={Login} />
-             <Stack.Screen name="esquecisenha" component={EsqueciSenha} />
-             <Stack.Screen name="cadastro" component={Cadastro} />
+           
+
+
+            
              
-   
             </Stack.Navigator>
         </NavigationContainer>
 

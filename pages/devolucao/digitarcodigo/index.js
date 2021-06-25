@@ -3,12 +3,11 @@ import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { TextInput } from 'react-native-gesture-handler';
-import DataeHora from '../dataehora';
 
-const DigitarCode = ({navigation}) =>{
+const DigitarCodigo = ({navigation}) =>{
 
-    const ImagemCamera =()=>{
-        navigation.navigate('entregas')
+    const CodigoBarras =()=>{
+        navigation.navigate('codigobarra')
     }
 
     const Home =()=>{
@@ -47,6 +46,7 @@ const DigitarCode = ({navigation}) =>{
 
         </View>
 
+       
 
    
     <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
@@ -109,4 +109,4 @@ const styles = StyleSheet.create({
      }
 });
 
-export default DigitarCode;
+export default DigitarCodigo;
