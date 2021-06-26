@@ -29,6 +29,10 @@ const Home =({navigation})=>{
         navigation.navigate('codigobarra')
     }
 
+    const CodigoBarraOcorrencia =()=>{
+        navigation.navigate('codigobarraocorrencia') 
+    }
+
     
 
     
@@ -65,7 +69,7 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity 
+        <TouchableOpacity onPress={()=>CodigoBarraOcorrencia()}
         style={[styles.botaoo, {backgroundColor: '#F29035'}]} >
             <Text style={styles.texttouch}>Ocorrência</Text>
             <Ionicons

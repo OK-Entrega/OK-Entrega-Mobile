@@ -7,15 +7,15 @@ import { TextInput } from 'react-native-gesture-handler';
 const DigiteCodigoOcorrencia = ({navigation}) =>{
 
     const CodigoBarras =()=>{
-        navigation.navigate('codigobarra')
+        navigation.navigate('codigobarraocorrencia')
     }
 
     const Home =()=>{
         navigation.navigate('home')
     }
 
-    const DataeHora =()=>{
-        navigation.navigate('dataehora')
+    const DataeHoraOcorrencia =()=>{
+        navigation.navigate('datahoraocorrencia')
     }
 
   return (
@@ -63,13 +63,13 @@ const DigiteCodigoOcorrencia = ({navigation}) =>{
 
     <View style={{ width: '100%', height: '40%', alignItems: 'center', justifyContent: 'space-around'}}>
     <TouchableOpacity
-    onPress={() => DataeHora()}
+    onPress={() => DataeHoraOcorrencia()}
      style={{width: '55%', height: '15%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Prosseguir</Text>
     </TouchableOpacity>
 
     <TouchableOpacity
-     onPress={() => ImagemCamera() }
+     onPress={() => CodigoBarras() }
      style={{width: '55%', height: '15%', backgroundColor: '#3071D3', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Escanear código</Text>
     </TouchableOpacity>

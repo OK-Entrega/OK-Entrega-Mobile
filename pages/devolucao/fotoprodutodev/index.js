@@ -26,7 +26,7 @@ const FotoDosProdutoDev = ({navigation}) =>{
   }
 
   const DescricaoProblema =()=>{
-    navigation.navigate('descricaoproblema')
+    navigation.navigate('descricaoprblema')
   }
 
   const Home =()=>{

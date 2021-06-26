@@ -25,8 +25,8 @@ const CodigoBarraOcorrencia = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const DigitarCodigoOcorrencia =()=>{
+    navigation.navigate('digitecodigoocorrencia')
   }
 
   const Home =()=>{
@@ -103,7 +103,7 @@ const tirarFoto = async ()=>{
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={() => DigitarCode()}>
+    onPress={() => DigitarCodigoOcorrencia()}>
 
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Digitar código</Text>
     </TouchableOpacity>

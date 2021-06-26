@@ -38,8 +38,8 @@ const DataHoraOcorrencia = ({navigation}) =>{
         navigation.navigate('home')
     }
 
-    const FotoCanhoto =()=>{
-      navigation.navigate('fotocanhoto')
+    const FotoOcorrencia =()=>{
+      navigation.navigate('fotoocorrencia')
   }
 
   return (
@@ -105,7 +105,7 @@ const DataHoraOcorrencia = ({navigation}) =>{
       <View style={{height: '35%', width: '100%', alignItems: 'center', justifyContent: 'space-evenly'}}> 
         
         <TouchableOpacity
-        onPress={() => FotoCanhoto()}
+        onPress={() => FotoOcorrencia()}
         style={{width: '55%', height: '15%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={styles.textodbutton}>Prosseguir</Text>
     </TouchableOpacity>

@@ -24,8 +24,8 @@ const FotoOcorrencia = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const MotivoOcorrencia =()=>{
+    navigation.navigate('motivoocorrencia')
   }
 
   const Home =()=>{
@@ -107,10 +107,9 @@ const tirarFoto = async ()=>{
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity  
+    <TouchableOpacity  onPress={()=>tirarFoto()}
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     >
-
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Tirar foto</Text>
     </TouchableOpacity>
 
@@ -118,7 +117,7 @@ const tirarFoto = async ()=>{
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
+    onPress={()=>MotivoOcorrencia()}>
     
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
     </TouchableOpacity>

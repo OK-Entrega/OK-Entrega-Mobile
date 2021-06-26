@@ -1,34 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image, Button } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
-
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { TextInput } from 'react-native-paper';
 
 const MotivoDevolucao = ({navigation}) =>{
- const [date, setDate] = useState(new Date(1598051730000));
-  const [mode, setMode] = useState('datetime');
-  const [show, setShow] = useState(false);
-
-  const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-    
-  };
-
-  const showMode = (currentMode) => {
-    setShow(true);
-    setMode(currentMode);
-  };
-
-  const showDatepicker = () => {
-    showMode('date');
-  };
-
-  const showTimepicker = () => {
-    showMode('time');
-  };
-
+    //faça a coneccao aqui
 
     const ImagemCamera =()=>{
         navigation.navigate('entregas')
@@ -43,7 +20,7 @@ const MotivoDevolucao = ({navigation}) =>{
   }
 
   return (
-     <View style={{flex: 1, backgroundColor: 'white',}}> 
+     <View style={{flex: 1, backgroundColor: 'white', }}> 
             
            <View style={styles.nav}>
 
@@ -53,7 +30,7 @@ const MotivoDevolucao = ({navigation}) =>{
                 />
         </TouchableOpacity>
 
-        <Text style={styles.textodbutton}> Selecione data e hora da entrega</Text>
+        <Text style={styles.textodbutton}> Motivo da devolução</Text>
 
     <TouchableOpacity
     onPress={() => Home()}
@@ -70,38 +47,29 @@ const MotivoDevolucao = ({navigation}) =>{
 
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
-      <Text style={{fontSize: 24}}>Motivo da devolução // pagina ainda não finalizada</Text>
+    <Text style={{fontWeight: 'bold', 
+                  fontFamily: 'Segoe UI', 
+                  color: 'black',
+                  fontSize: 30,
+                  padding: 20}}>
+    Motivo da devolução 
+    </Text>
+      
 
-            <View style={{flexDirection: 'row', margin: 5,width: '60%',  justifyContent: 'space-around'}}>
-
-              <TouchableOpacity onPress={showDatepicker} 
-              style={styles.touchopa}>
-                 <Ionicons
-                  name="calendar-outline" color='black' size={45}
-                />
-              </TouchableOpacity>
-
+      <TextInput
+                style={{width: '80%'}}
+                mode ="outlined"
+                underlineColor= '#2ECC71'
+                label="Digite seu numero de telefone"
+                right={<TextInput.Affix text="/100" />}
+                outlineColor = '#2ECC71'
+         />
+            
            
-            <TouchableOpacity onPress={showTimepicker} 
-              style={styles.touchopa}>
-              <Ionicons
-                 name="alarm-outline" color='black' size={45}
-               />
-            </TouchableOpacity>
-            </View>
             
       </View>
-      {show && (
-                <DateTimePicker
-                testID="dateTimePicker"
-                value={date}
-                mode='datetime'
-                is24Hour={true}
-                display="default"
-                onChange={onChange}
-                />
-            )}
-
+      
+     
       <View style={{height: '35%', width: '100%', alignItems: 'center', justifyContent: 'space-evenly'}}> 
         
         <TouchableOpacity

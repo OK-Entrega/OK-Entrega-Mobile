@@ -34,6 +34,10 @@ const FotoDosProdutos = ({navigation}) =>{
     navigation.navigate('home')
 }
 
+const Confirma =()=>{
+  navigation.navigate('confirma')
+}
+
 const tirarFoto = async ()=>{
   if(camera){
     let foto = await camera.takePictureAsync();
@@ -120,7 +124,7 @@ const tirarFoto = async ()=>{
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
+    onPress={()=>Confirma()}>
     
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
     </TouchableOpacity>

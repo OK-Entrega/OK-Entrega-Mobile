@@ -24,8 +24,8 @@ const DescricaoProblema2 = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const MotivoDevolucao =()=>{
+    navigation.navigate('motivodevolucao')
   }
 
   const Home =()=>{
@@ -107,7 +107,7 @@ const tirarFoto = async ()=>{
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity  
+    <TouchableOpacity  onPress={()=> MotivoDevolucao()}
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     >
 

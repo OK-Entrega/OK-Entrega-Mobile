@@ -3,12 +3,12 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, } from 'react-native';
 import {Ionicons} from '@expo/vector-icons'
 
 
-const Home =()=>{
-    Navigator.navigation('home')
-}
+
 const OcorrenciaConfirmacao = ({navigation}) =>{
   
-
+    const Home =()=>{
+        navigation.navigate('home')
+    }
   return (
       <View style={{ flex: 1}}> 
            <View style={styles.nav}>

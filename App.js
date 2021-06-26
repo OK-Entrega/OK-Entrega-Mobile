@@ -79,23 +79,51 @@ export default function App() {
             <Stack.Navigator screenOptions={{ headerShown: false }}>
 
             
-
+            
             <Stack.Screen name="home" component={Home} /> 
-            <Stack.Screen name="login" component={Login} />
-           	<Stack.Screen name="cadastro" component={Cadastro} />
-            <Stack.Screen name="esquecisenha" component={EsqueciSenha} />
+            
+           <Stack.Screen name="canhoto" component={Canhoto} />   
+           <Stack.Screen name="fotocannota" component={FotoCanNota} />
+           <Stack.Screen name="fotocannota2" component={FotoCanNota2} />
+           <Stack.Screen name="confirmarcanhoto" component={ConfirmarCanhoto} />  
 
-             <Stack.Screen name="codigobarra" component={CodigoBarras} />   
-             <Stack.Screen name="digitarcodigo" component={DigitarCodigo} />
-             <Stack.Screen name="datahoradevolucao" component={DataHoraDevolucao} />
+
+	        <Stack.Screen name="codigobarra" component={CodigoBarras} />   
+            <Stack.Screen name="digitarcodigo" component={DigitarCodigo} />
+            <Stack.Screen name="datahoradevolucao" component={DataHoraDevolucao} />
             <Stack.Screen name="fotoprodutodev" component={FotoDosProdutoDev} />
             <Stack.Screen name="fotoprodutodev2" component={FotoDosProdutosDev2}/>
             <Stack.Screen name="descricaoprblema" component={DescricaoProblema}/> 
             <Stack.Screen name="descricaoprblema2" component={DescricaoProblema2}/> 
+            <Stack.Screen name="motivodevolucao" component={MotivoDevolucao} />
+            <Stack.Screen name="confirmadevolucao" component={ConfirmaDevolucao} />
+            
+            
+             <Stack.Screen name="codigobarraocorrencia" component={CodigoBarraOcorrencia} />   
+             <Stack.Screen name="datahoraocorrencia" component={DataHoraOcorrencia} />
+             <Stack.Screen name="digitecodigoocorrencia" component={DigiteCodigoOcorrencia} />
+             <Stack.Screen name="fotoocorrencia" component={FotoOcorrencia} />
+             <Stack.Screen name="fotoocorrencia2" component={FotoOcorrencia2}/>
+             <Stack.Screen name="motivoocorrencia" component={MotivoOcorrencia}/> 
+             <Stack.Screen name="ocorrenciaconfirmacao" component={OcorrenciaConfirmacao}/> 
+
+
+             <Stack.Screen name="confirma" component={Confirma} />   
+             <Stack.Screen name="dataehora" component={DataeHora} />
+             <Stack.Screen name="digitarcodbarra" component={DigitarCode} />
+             <Stack.Screen name="entregas" component={ImagemCamera} />
+             <Stack.Screen name="fotocanhoto" component={FotoCanhoto}/>
+             <Stack.Screen name="fotocanhoto2" component={FotoCanhoto2}/> 
+             <Stack.Screen name="fotodaentrega" component={FotoDaEntrega}/> 
+             <Stack.Screen name="fotodosprodutos2" component={FotoDosProdutos2}/> 
+             <Stack.Screen name="fotodosprodutos" component={FotoDosProdutos}/> 
+
+             
 
 
 
-            <Stack.Screen name="motivodevolucao" component={MotivoDevolucao} /> 
+
+             
              
                
          
