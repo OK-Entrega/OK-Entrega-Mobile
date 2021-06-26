@@ -30,6 +30,13 @@ const FotoCanNota = ({navigation}) =>{
     navigation.navigate('home')
 }
 
+//precisa tranferir a foto para essa pagina}
+const FotoCanNota2 =()=>{
+  navigation.navigate('fotocannota2')
+}
+
+
+
 const tirarFoto = async ()=>{
   if(camera){
     let foto = await camera.takePictureAsync();

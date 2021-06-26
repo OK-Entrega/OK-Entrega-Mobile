@@ -54,6 +54,7 @@ import OcorrenciaConfirmacao from './pages/ocorrencia/ocorrenciaconfirmacao';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+
 const Logout = () => {
 
 }
@@ -63,7 +64,7 @@ const Autenticado = () => {
     return (
 
         <Tab.Navigator initialRouteName="Home">
-            <Tab.Screen name="home" component={Home} />
+            <Tab.Screen  name="home" component={Home} />
             <Tab.Screen name="Logout" component={Logout} />
         </Tab.Navigator>
     )
@@ -74,15 +75,37 @@ export default function App() {
     return (
 
         <NavigationContainer>
+            
             <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+            
+
+            <Stack.Screen name="home" component={Home} /> 
+            <Stack.Screen name="login" component={Login} />
+           	<Stack.Screen name="cadastro" component={Cadastro} />
+            <Stack.Screen name="esquecisenha" component={EsqueciSenha} />
+
+             <Stack.Screen name="codigobarra" component={CodigoBarras} />   
+             <Stack.Screen name="digitarcodigo" component={DigitarCodigo} />
+             <Stack.Screen name="datahoradevolucao" component={DataHoraDevolucao} />
+            <Stack.Screen name="fotoprodutodev" component={FotoDosProdutoDev} />
+            <Stack.Screen name="fotoprodutodev2" component={FotoDosProdutosDev2}/>
+            <Stack.Screen name="descricaoprblema" component={DescricaoProblema}/> 
+            <Stack.Screen name="descricaoprblema2" component={DescricaoProblema2}/> 
+
+
+
+            <Stack.Screen name="motivodevolucao" component={MotivoDevolucao} /> 
+             
                
-        
-
-            <Stack.Screen name="perfil" component={Perfil} />
-           
+         
            
 
+            
+          
 
+
+           
             
              
             </Stack.Navigator>

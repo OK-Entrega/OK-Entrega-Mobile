@@ -14,8 +14,8 @@ const DigitarCodigo = ({navigation}) =>{
         navigation.navigate('home')
     }
 
-    const DataeHora =()=>{
-        navigation.navigate('dataehora')
+    const DataHoraDevolucao =()=>{
+        navigation.navigate('datahoradevolucao')
     }
 
   return (
@@ -63,13 +63,13 @@ const DigitarCodigo = ({navigation}) =>{
 
     <View style={{ width: '100%', height: '40%', alignItems: 'center', justifyContent: 'space-around'}}>
     <TouchableOpacity
-    onPress={() => DataeHora()}
+    onPress={() => DataHoraDevolucao()}
      style={{width: '55%', height: '15%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Prosseguir</Text>
     </TouchableOpacity>
 
     <TouchableOpacity
-     onPress={() => ImagemCamera() }
+     onPress={() => CodigoBarras() }
      style={{width: '55%', height: '15%', backgroundColor: '#3071D3', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Escanear código</Text>
     </TouchableOpacity>

@@ -10,47 +10,49 @@ const DATA = [
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
       title: 'Carrefour',
     },
+   
+   
     
   ];
+  
+  
 
- 
-
-  const FotoCanNota =()=>{
-    navigation.navigate('fotocannota')
-}
- 
-
-  const Item = ({ title }) => (
-    
-      <View>
-       <View style={styles.item}>
-      <Text style={{fontSize: 30}}>YPE</Text>
-      <Text style={styles.title2}>{title}</Text>
-      <Text>Você tem um canhoto pendente para essa empresa</Text>
-      <View style={{alignItems: 'center', paddingTop: 8}}>
-      <TouchableOpacity   
-      style={styles.button}
-      onPress={() =>  FotoCanNota ()}>
-      Enviar canhoto
-      </TouchableOpacity>
-      </View>
-      
-
-      </View>
-    
-
-      
-    </View>
-  );
-
-  const renderItem = ({ item }) => (
-    <Item title={item.title2} />
-  );
+  
 
 
 const Canhoto =({navigation})=>{  
 
   
+  const Item = ({ title }) => (
+    
+    <View>
+     <View style={styles.item}>
+    <Text style={{fontSize: 30}}>YPE</Text>
+    <Text style={styles.title2}>{title}</Text>
+    <Text>Você tem um canhoto pendente para essa empresa</Text>
+    <View style={{alignItems: 'center', paddingTop: 8}}>
+    <TouchableOpacity   
+    onPress={() =>  FotoCanNota ()}
+    style={styles.button}
+    >
+    <Text>Enviar canhoto</Text>
+    </TouchableOpacity>
+    </View>
+    
+
+    </View>
+  
+
+    
+  </View>
+);
+
+const renderItem = ({ item }) => (
+  <Item title={item.title2} />
+);
+  const FotoCanNota =()=>{
+    navigation.navigate('fotocannota')
+  }
     return(
 
    <View style={styles.container}>
@@ -60,20 +62,18 @@ const Canhoto =({navigation})=>{
      {/* linha verde do cabecalho*/}
      <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
 
-        {/* view para determinar o comportamento dos botoes */}
      
     <Text style={styles.title}>
     Canhotos
     </Text>
 
-    <SafeAreaView>
-
+    
     <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={item => item.id}
     />
-    </SafeAreaView>
+    
 
     </View>
        
@@ -85,6 +85,7 @@ const Canhoto =({navigation})=>{
 const styles = StyleSheet.create({
     container: {
       flex: 1,
+
       backgroundColor: '#F7F7F7',
 
     },
@@ -119,9 +120,10 @@ const styles = StyleSheet.create({
             backgroundColor: '#F7F7F7',
             alignItems: 'center',
             justifyContent: 'center',
-          }, button: {
+          }, 
+          button: {
               width: '70%',
-              height: '130%',
+              height: '50%',
               backgroundColor: '#2ECC71',
               borderRadius: 5,
               alignItems: 'center',

@@ -24,8 +24,8 @@ const FotoDosProdutosDev2 = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const FotoDosProdutosDev =()=>{
+    navigation.navigate('fotoprodutodev')
   }
 
   const Home =()=>{
@@ -118,7 +118,7 @@ const tirarFoto = async ()=>{
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
+    onPress={()=>FotoDosProdutosDev()}>
     
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Tirar outra </Text>
     </TouchableOpacity>

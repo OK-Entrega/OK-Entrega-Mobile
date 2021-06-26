@@ -30,8 +30,8 @@ const DataHoraDevolucao = ({navigation}) =>{
   };
 
 
-    const ImagemCamera =()=>{
-        navigation.navigate('entregas')
+    const FotoDosProdutoDev =()=>{
+        navigation.navigate('fotoprodutodev')
     }
 
     const Home =()=>{
@@ -105,7 +105,7 @@ const DataHoraDevolucao = ({navigation}) =>{
       <View style={{height: '35%', width: '100%', alignItems: 'center', justifyContent: 'space-evenly'}}> 
         
         <TouchableOpacity
-        onPress={() => FotoCanhoto()}
+        onPress={() => FotoDosProdutoDev()}
         style={{width: '55%', height: '15%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
         <Text style={styles.textodbutton}>Prosseguir</Text>
     </TouchableOpacity>

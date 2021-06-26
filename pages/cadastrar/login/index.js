@@ -88,9 +88,6 @@ const Login = ({navigation}) => {
                 label="Digite seu numero de telefone"
                 right={<TextInput.Affix text="/100" />}
                 outlineColor = '#2ECC71'
-                selectionColor = '#2ECC71'
-                borderColor = '#2ECC71'
-                color = '#2ECC71'
                 onChangeText={text => setCellphoneNumber(text)}
                 value={cellphoneNumber}
                 
@@ -102,14 +99,12 @@ const Login = ({navigation}) => {
     
         
             <TextInput 
-            backgroundColor='#2ECC71'
             onChangeText={text => setPassword(text)}
             value={password}
             secureTextEntry={true}
             mode="outlined"
             label="Digite sua senha"
             outlineColor = '#2ECC71'
-            selectionColor = '#2ECC71'
             right={<TextInput.Affix text="/100" />}
             
             />

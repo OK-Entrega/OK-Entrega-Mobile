@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-na
 import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
+import DescricaoProblema2 from '../descricaoproblema2';
 
 const FotoDosProdutoDev = ({navigation}) =>{
   
@@ -24,8 +25,8 @@ const FotoDosProdutoDev = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const DescricaoProblema =()=>{
+    navigation.navigate('descricaoproblema')
   }
 
   const Home =()=>{
@@ -107,18 +108,18 @@ const tirarFoto = async ()=>{
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
     </TouchableOpacity>
 
-    <TouchableOpacity  
+    <TouchableOpacity  onPress={()=>tirarFoto()}
     style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
     >
 
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
+        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Tirar Foto</Text>
     </TouchableOpacity>
 
 
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>CancelarCode()}>
+    onPress={()=>DescricaoProblema()}>
     
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
     </TouchableOpacity>

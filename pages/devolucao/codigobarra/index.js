@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-na
 import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
+import DigitarCodigo from '../digitarcodigo';
 
 
 const CodigoBarras = ({navigation}) =>{
@@ -25,8 +26,8 @@ const CodigoBarras = ({navigation}) =>{
     return <Text>No access to camera</Text>;
   }
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
+  const DigitarCodigo =()=>{
+    navigation.navigate('digitarcodigo')
   }
 
   const Home =()=>{
@@ -103,7 +104,7 @@ const tirarFoto = async ()=>{
     <TouchableOpacity  
 
     style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={() => DigitarCode()}>
+    onPress={() => DigitarCodigo()}>
 
         <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Digitar código</Text>
     </TouchableOpacity>

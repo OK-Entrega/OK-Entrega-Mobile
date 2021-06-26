@@ -24,6 +24,13 @@ const Home =({navigation})=>{
     const Canhoto =()=>{
         navigation.navigate('canhoto')
     }
+
+    const CodigoBarras =()=>{
+        navigation.navigate('codigobarra')
+    }
+
+    
+
     
     return(
 
@@ -67,7 +74,7 @@ const Home =({navigation})=>{
         </TouchableOpacity>
 
 
-        <TouchableOpacity 
+        <TouchableOpacity  onPress={()=>CodigoBarras()}
         style={[styles.botaoo, {backgroundColor: '#E92525'}]}>
             <Text style={styles.texttouch}>Devolução</Text>
             <Ionicons

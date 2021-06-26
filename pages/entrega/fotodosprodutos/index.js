@@ -4,6 +4,8 @@ import { Camera } from 'expo-camera';
 import {Ionicons} from '@expo/vector-icons'
 import { set } from 'react-native-reanimated';
 
+
+
 const FotoDosProdutos = ({navigation}) =>{
   
     const [imagemUri, setImagemUri] = useState(null);
