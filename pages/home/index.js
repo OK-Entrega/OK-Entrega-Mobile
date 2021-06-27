@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity, } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons'
@@ -7,8 +7,7 @@ import Historico from "../historico";
 
 import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 
-
-
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 const Home = ({ navigation }) => {
 
@@ -32,9 +31,6 @@ const Home = ({ navigation }) => {
     const CodigoBarraOcorrencia = () => {
         navigation.navigate('codigobarraocorrencia')
     }
-
-
-
 
     return (
 

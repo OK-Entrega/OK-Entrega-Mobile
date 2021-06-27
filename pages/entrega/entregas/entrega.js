@@ -1,125 +1,126 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
-import {Ionicons} from '@expo/vector-icons'
-import { set } from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons'
 
+import * as ScreenOrientation from 'expo-screen-orientation';
 
-const ImagemCamera = ({navigation}) =>{
-  
-    const [imagemUri, setImagemUri] = useState(null);
+const ImagemCamera = ({ navigation }) => {
+
     const [hasPermission, setHasPermission] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.back);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
 
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
+        navigation.addListener("focus", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+        });
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
-  }
+        navigation.addListener("blur", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+        });
+    }, []);
 
-  const Home =()=>{
-    navigation.navigate('home')
-}
-
-const tirarFoto = async ()=>{
-  if(camera){
-    let foto = await camera.takePictureAsync();
-    setImagemUri(foto.uri);
-    
-  }
-  
-  CancelarCode = async ()=>{
-    if (camera){
-    setImagemUri(false);
-      
+    if (hasPermission === false) {
+        navigation.navigate("home");
     }
-  }
 
-}
+    const Home = () => {
+        navigation.navigate('home')
+    }
 
-  return (
-      <View style={{ flex: 1}}> 
-           <View style={styles.nav}>
+    const DateAndHour = (data) => {
+        navigation.navigate("dataehora", {
+            accessKey: data
+        })
+    }
 
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        >
-                <Ionicons
-                 name="chevron-back-outline" color='white' size={25}
-                />
-        </TouchableOpacity>
+    return (
+        <View style={{ flex: 1 }}>
+            <View style={styles.nav}>
 
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Escaneie o código de barras</Text>
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons
+                        name="chevron-back-outline" color='white' size={25}
+                    />
+                </TouchableOpacity>
 
-        <TouchableOpacity
-        onPress={() => Home()}
-        >
-        <Image
-                style={styles.logo}
-                source={require('../../../assets/logo.png')}
-        />
-        </TouchableOpacity>
+                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> Escaneie o código de barras</Text>
+
+                <TouchableOpacity
+                    onPress={() => Home()}
+                >
+                    <Image
+                        style={styles.logo}
+                        source={require('../../../assets/logo.png')}
+                    />
+                </TouchableOpacity>
+            </View>
+
+            <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
+
+            <View style={{ flex: 1 }}>
+                <Camera style={{ width: '100%', height: '100%', justifyContent: "center" }}
+                    type={Camera.Constants.Type.back}
+                    ref={ref => {
+                        camera = ref;
+                    }}
+                    onBarCodeScanned={(result) => {
+                        DateAndHour(result);
+                    }}>
+                    <View style={styles.layerTop} />
+                    <View style={styles.layerCenter}>
+                        <View style={styles.layerLeft} />
+                        <View style={styles.focused} />
+                        <View style={styles.layerRight} />
+                    </View>
+                    <View style={styles.layerBottom} />
+                </Camera>
+            </View>
+            <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
+            <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+                <TouchableOpacity
+                    onPress={() => Home()}
+                    style={{ width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                    <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Cancelar</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-
-        <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View> 
-
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Camera style={{ width: '100%', height: '100%'}}
-       type={type}
-       ref={ref => {
-         camera = ref;
-       }}>
-       
-       
-        {imagemUri && <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> }
-        
-
-
-      </Camera>
-
-    </View>
-    <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
-
-    <View style={{width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
-
-    <TouchableOpacity
-    onPress={() =>Home()}
-    style={{width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
-    </TouchableOpacity>
-
-    <TouchableOpacity  
-
-    style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={() => DigitarCode()}>
-
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Digitar código</Text>
-    </TouchableOpacity>
-
-    </View>
-
-    </View>
-  );
-
-
+    );
 }
 
-
-
+const opacity = 'rgba(0, 0, 0, .6)';
 const styles = StyleSheet.create({
-    
+    layerTop: {
+        flex: 2,
+        backgroundColor: opacity
+    },
+    layerCenter: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    layerLeft: {
+        flex: 1,
+        backgroundColor: opacity
+    },
+    focused: {
+        width: "100%",
+        minHeight: 200,
+        height: 200
+    },
+    layerRight: {
+        flex: 1,
+        backgroundColor: opacity
+    },
+    layerBottom: {
+        flex: 2,
+        backgroundColor: opacity
+    },
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
@@ -128,11 +129,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 14
-        
-    },  logo : {
+
+    }, logo: {
         width: 35,
-        height: 35 
-     }
+        height: 35
+    }
 });
 
 export default ImagemCamera;
