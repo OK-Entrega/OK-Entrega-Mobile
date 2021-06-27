@@ -1,148 +1,146 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image, Modal } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Camera } from 'expo-camera';
-import {Ionicons} from '@expo/vector-icons'
-import { set } from 'react-native-reanimated';
+import { Ionicons } from '@expo/vector-icons'
 
+import * as ScreenOrientation from 'expo-screen-orientation';
 
+const FotoDosProdutos = ({ navigation, route }) => {
 
-const FotoDosProdutos = ({navigation}) =>{
-  
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
     const [type, setType] = useState(Camera.Constants.Type.back);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestPermissionsAsync();
+            setHasPermission(status === 'granted');
+        })();
+        navigation.addListener("focus", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+        });
 
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
+        navigation.addListener("blur", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+        });
+    }, []);
 
-  const DigitarCode =()=>{
-    navigation.navigate('digitarcodbarra')
-  }
-
-  const Home =()=>{
-    navigation.navigate('home')
-}
-
-const Confirma =()=>{
-  navigation.navigate('confirma')
-}
-
-const tirarFoto = async ()=>{
-  if(camera){
-    let foto = await camera.takePictureAsync();
-    setImagemUri(foto.uri);
-    
-  }
-
-  const Confirmar=()=>{
-
-  }
-  
-  CancelarCode = async ()=>{
-    if (camera){
-    setImagemUri(false);
-      
+    if (hasPermission === null) {
+        return <View />;
     }
-  }
+    if (hasPermission === false) {
+        return <Text>No access to camera</Text>;
+    }
 
-}
+    const Home = () => {
+        navigation.navigate('home')
+    }
 
-  return (
-      <View style={{ flex: 1}}> 
-           <View style={styles.nav}>
+    const confirmar = () => {
+        navigation.navigate('finalizarentrega', {
+            accessKey: route.params.accessKey,
+            date: route.params.date,
+            hour: route.params.hour,
+            voucherUri: route.params.voucherUri,
+            evidenceUri: imagemUri
+        })
+    }
 
-        <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        >
-                <Ionicons
-                 name="chevron-back-outline" color='white' size={25}
-                />
-        </TouchableOpacity>
-
-        <Text style={{color: 'white',fontWeight: 'bold', fontFamily: 'Segoe UI'}}> Tire uma foto dos produtos (opcional)</Text>
-
-        <TouchableOpacity
-        onPress={() => Home()}
-        >
-        <Image
-                style={styles.logo}
-                source={require('../../../assets/logo.png')}
-        />
-        </TouchableOpacity>
-        </View>
-
-        <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View> 
-
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Camera style={{ width: '100%', height: '100%'}}
-       type={type}
-       ref={ref => {
-         camera = ref;
-       }}>
-       
-        {imagemUri && 
-        <Image source={{uri : imagemUri}} style={{width: '100%', height: '100%'}}/> 
+    const tirarFoto = async () => {
+        if (camera) {
+            let foto = await camera.takePictureAsync();
+            setImagemUri(foto.uri);
         }
+    }
 
-        
+    return (
+        <View style={{ flex: 1 }}>
+            <View style={styles.nav}>
 
-        
+                <TouchableOpacity
+                    onPress={() => navigation.goBack()}
+                >
+                    <Ionicons
+                        name="chevron-back-outline" color='white' size={25}
+                    />
+                </TouchableOpacity>
 
+                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> Tire uma foto dos produtos (opcional)</Text>
 
-      </Camera>
+                <TouchableOpacity
+                    onPress={() => Home()}
+                >
+                    <Image
+                        style={styles.logo}
+                        source={require('../../../assets/logo.png')}
+                    />
+                </TouchableOpacity>
+            </View>
 
-    </View>
-    <View style={{width: '100%', height: '0.5%', backgroundColor: '#2ECC71'}}></View>
+            <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-    <View style={{width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center'}}>
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                {
+                    imagemUri === null
+                        ?
+                        <Camera style={{ width: '100%', height: '100%' }}
+                            type={type}
+                            ref={ref => {
+                                camera = ref;
+                            }}>
 
-    <TouchableOpacity
-    onPress={() =>Home()}
-    style={{width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center',}}>
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>Cancelar</Text>
-    </TouchableOpacity>
+                        </Camera>
+                        :
+                        <Image source={{ uri: imagemUri }} style={{ width: '100%', height: '100%' }} />
+                }
+            </View>
+            <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-    <TouchableOpacity  
-    style={{width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    >
+            <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}>confirmar</Text>
-    </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={() => Home()}
+                    style={{ width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                    <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Cancelar</Text>
+                </TouchableOpacity>
+                {
+                    imagemUri === null
+                        ?
+                        <>
+                            <TouchableOpacity
+                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                onPress={() => tirarFoto()}>
 
+                                <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar foto</Text>
+                            </TouchableOpacity>
+                        </>
+                        :
+                        <>
+                            <TouchableOpacity
+                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }} onPress={() => confirmar()}>
+                                <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Confirmar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                onPress={() => setImagemUri(null)}>
 
-    <TouchableOpacity  
+                                <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar outra</Text>
+                            </TouchableOpacity>
+                        </>
+                }
 
-    style={{width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8,  alignItems: 'center', justifyContent: 'center'} } 
-    onPress={()=>Confirma()}>
-    
-        <Text style={{fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white'}}> Prosseguir sem foto </Text>
-    </TouchableOpacity>
+            </View>
 
-        
+        </View>
+    );
 
-    </View>
-
-    </View>
-  );
- 
 
 }
 
 
 
 const styles = StyleSheet.create({
-    
+
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
@@ -151,11 +149,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 14
-        
-    },  logo : {
+
+    }, logo: {
         width: 35,
-        height: 35 
-     }
+        height: 35
+    }
 });
 
 export default FotoDosProdutos;

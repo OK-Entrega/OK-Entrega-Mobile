@@ -37,7 +37,12 @@ const FotoCanhoto = ({ navigation, route }) => {
     }
 
     const FotoDosProdutos = () => {
-        navigation.navigate('fotodosprodutos')
+        navigation.navigate('fotodosprodutos', {
+            accessKey: route.params.accessKey,
+            date: route.params.date,
+            hour: route.params.hour,
+            voucherUri: imagemUri
+        })
     }
 
     const tirarFoto = async () => {
@@ -69,12 +74,18 @@ const FotoCanhoto = ({ navigation, route }) => {
             </View>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Camera style={{ width: '100%', height: '100%' }}
-                    type={Camera.Constants.Type.back}
-                    ref={ref => {
-                        camera = ref;
-                    }}>
-                </Camera>
+                {
+                    imagemUri === null
+                        ?
+                        <Camera style={{ width: '100%', height: '100%' }}
+                            type={Camera.Constants.Type.back}
+                            ref={ref => {
+                                camera = ref;
+                            }}>
+                        </Camera>
+                        :
+                        <Image source={{ uri: imagemUri }} style={{ width: '100%', height: '100%' }} />
+                }
             </View>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
             <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
@@ -103,6 +114,12 @@ const FotoCanhoto = ({ navigation, route }) => {
                                 onPress={() => FotoDosProdutos()}>
 
                                 <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Confirmar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                onPress={() => setImagemUri(null)}>
+
+                                <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar outra</Text>
                             </TouchableOpacity>
                         </>
                 }

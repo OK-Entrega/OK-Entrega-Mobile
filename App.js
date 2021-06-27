@@ -14,13 +14,12 @@ import ImagemCamera from './pages/entrega/entregas/entrega';
 import DigitarCode from './pages/entrega/digitarcodbarra';
 import DataeHora from './pages/entrega/dataehora';
 import FotoCanhoto from './pages/entrega/fotocanhoto';
-import FotoCanhoto2 from './pages/entrega/fotocanhoto2';
 import FotoDosProdutos from './pages/entrega/fotodosprodutos';
 import FotoDosProdutos2 from './pages/entrega/fotodosprodutos2';
 import FotoDaEntrega from './pages/entrega/fotodaentrega';
 import Historico from './pages/historico';
 import Canhoto from './pages/canhotos/canhoto';
-import Confirma from './pages/entrega/confirma';
+import Confirma from './pages/entrega/confirma/index';
 import FotoCanNota from './pages/canhotos/fotocannota';
 import FotoCanNota2 from './pages/canhotos/fotocannota2';
 import ConfirmarCanhoto from './pages/canhotos/confirmarcanhoto';
@@ -77,14 +76,12 @@ export default function App() {
                 <Stack.Screen name="ocorrenciaconfirmacao" component={OcorrenciaConfirmacao} />
 
 
-                <Stack.Screen name="confirma" component={Confirma} />
+                <Stack.Screen name="finalizarentrega" component={Confirma}/>
                 <Stack.Screen name="dataehora" component={DataeHora} />
                 <Stack.Screen name="digitarcodbarra" component={DigitarCode} />
                 <Stack.Screen name="entregas" component={ImagemCamera} />
                 <Stack.Screen name="fotocanhoto" component={FotoCanhoto} />
-                <Stack.Screen name="fotocanhoto2" component={FotoCanhoto2} />
                 <Stack.Screen name="fotodaentrega" component={FotoDaEntrega} />
-                <Stack.Screen name="fotodosprodutos2" component={FotoDosProdutos2} />
                 <Stack.Screen name="fotodosprodutos" component={FotoDosProdutos} />
             </Stack.Navigator>
         </NavigationContainer>
