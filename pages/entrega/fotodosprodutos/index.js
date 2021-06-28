@@ -77,7 +77,7 @@ const FotoDosProdutos = ({ navigation, route }) => {
                     />
                 </TouchableOpacity>
 
-                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> Tire uma foto dos produtos (opcional)</Text>
+                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> {imagemUri === null ? "Tire uma foto dos produtos (opcional)" : "Confira a foto dos produtos"}</Text>
 
                 <TouchableOpacity
                     onPress={() => Home()}

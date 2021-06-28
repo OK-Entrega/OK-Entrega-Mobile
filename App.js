@@ -25,7 +25,6 @@ import CodigoBarras from './pages/devolucao/codigobarra';
 import DigitarCodigo from './pages/devolucao/digitarcodigo';
 import DataHoraDevolucao from './pages/devolucao/datahoradevolucao';
 import FotoDosProdutoDev from './pages/devolucao/fotoprodutodev';
-import FotoDosProdutosDev2 from './pages/devolucao/fotoprodutodev2';
 import DescricaoProblema from './pages/devolucao/descricaoproblema';
 import DescricaoProblema2 from './pages/devolucao/descricaoproblema2';
 import MotivoDevolucao from './pages/devolucao/motivodevolucao';
@@ -58,8 +57,7 @@ export default function App() {
                 <Stack.Screen name="digitarcodigo" component={DigitarCodigo} />
                 <Stack.Screen name="datahoradevolucao" component={DataHoraDevolucao} />
                 <Stack.Screen name="fotoprodutodev" component={FotoDosProdutoDev} />
-                <Stack.Screen name="fotoprodutodev2" component={FotoDosProdutosDev2} />
-                <Stack.Screen name="descricaoprblema" component={DescricaoProblema} />
+                <Stack.Screen name="descricaoproblema" component={DescricaoProblema} />
                 <Stack.Screen name="descricaoprblema2" component={DescricaoProblema2} />
                 <Stack.Screen name="motivodevolucao" component={MotivoDevolucao} />
                 <Stack.Screen name="confirmadevolucao" component={ConfirmaDevolucao} />

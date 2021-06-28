@@ -65,7 +65,7 @@ const FotoCanhoto = ({ navigation, route }) => {
                         name="chevron-back-outline" color='white' size={25}
                     />
                 </TouchableOpacity>
-                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> Fotografe o canhoto da nota</Text>
+                <Text style={{ color: 'white', fontWeight: 'bold', fontFamily: 'Segoe UI' }}> {imagemUri === null ? "Fotografe o canhoto da nota" : "Confira a foto do canhoto"}</Text>
                 <TouchableOpacity
                     onPress={() => Home()}
                 >

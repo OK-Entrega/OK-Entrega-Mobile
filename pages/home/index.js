@@ -46,20 +46,19 @@ const Home = ({ navigation }) => {
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => CodigoBarraOcorrencia()}
-                    style={[styles.botaoo, { backgroundColor: '#FEA520', marginBottom: 30 }]} >
-                    <Text style={styles.texttouch}>Ocorrência</Text>
-                    <Ionicons
-                        name="at-outline" color='white' size={25}
-                    />
-                </TouchableOpacity>
-
-
                 <TouchableOpacity onPress={() => CodigoBarras()}
-                    style={[styles.botaoo, { backgroundColor: '#E92525' }]}>
+                    style={[styles.botaoo, { backgroundColor: '#E92525', marginBottom: 30 }]}>
                     <Text style={styles.texttouch}>Devolução</Text>
                     <Ionicons
                         name="close-circle-outline" color='white' size={25}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => CodigoBarraOcorrencia()}
+                    style={[styles.botaoo, { backgroundColor: '#FEA520' }]} >
+                    <Text style={styles.texttouch}>Ocorrência</Text>
+                    <Ionicons
+                        name="at-outline" color='white' size={25}
                     />
                 </TouchableOpacity>
 
