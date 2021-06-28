@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, ActivityIndicator, Image, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { resize, url_api } from '../../../utils/constants';
-import { finish } from '../../../services/order-services';
 import * as Location from 'expo-location';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

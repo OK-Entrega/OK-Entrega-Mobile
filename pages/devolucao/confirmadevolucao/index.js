@@ -2,68 +2,67 @@ import React, { useEffect, useState } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { resize } from '../../../utils/constants';
-import { finish } from '../../../services/order-services';
 import * as Location from 'expo-location';
 
 const Confirma = ({ navigation, route }) => {
 
-    useEffect(() => {
-        (async () => {
-            let { status } = await Location.requestForegroundPermissionsAsync();
-            if (status !== 'granted') return;
+    // useEffect(() => {
+    //     (async () => {
+    //         let { status } = await Location.requestForegroundPermissionsAsync();
+    //         if (status !== 'granted') return;
 
-            let location = await Location.getCurrentPositionAsync({});
-            setLocation(location);
-            post();
-        })();
-    }, []);
+    //         let location = await Location.getCurrentPositionAsync({});
+    //         setLocation(location);
+    //         post();
+    //     })();
+    // }, []);
 
-    const post = async () => {
-        let formData = new FormData();
+    // const post = async () => {
+    //     let formData = new FormData();
 
-        // const uriEvidences = resize(route.params.evidenceUri);
-        const uriEvidences = route.params.evidenceUri;
-        const fileName = uriEvidences?.split("/").pop();
-        const ext = uriEvidences?.split(".").pop();
+    //     // const uriEvidences = resize(route.params.evidenceUri);
+    //     const uriEvidences = route.params.evidenceUri;
+    //     const fileName = uriEvidences?.split("/").pop();
+    //     const ext = uriEvidences?.split(".").pop();
 
-        if (uriEvidences !== null)
-            formData.append("evidences", {
-                uri: uriEvidences,
-                name: fileName,
-                type: "image/" + ext
-            });
+    //     if (uriEvidences !== null)
+    //         formData.append("evidences", {
+    //             uri: uriEvidences,
+    //             name: fileName,
+    //             type: "image/" + ext
+    //         });
 
-        formData.append("finishType", 1);
-        formData.append("reasonDevolution", route.params.reasonDevolution);
-        formData.append("finishedAt", new Date(route.params.year, route.params.month, route.params.day, route.params.hour, route.params.minutes, 0, 0));
-        formData.append("accessKey", route.params.accessKey);
-        formData.append("latitudeDeliverer", location.coords.latitude)
-        formData.append("longitudeDeliverer", location.coords.longitude)
+    //     formData.append("finishType", 1);
+    //     formData.append("reasonDevolution", route.params.reasonDevolution);
+    //     formData.append("finishedAt", new Date(route.params.year, route.params.month, route.params.day, route.params.hour, route.params.minutes, 0, 0));
+    //     formData.append("accessKey", route.params.accessKey);
+    //     formData.append("latitudeDeliverer", location.coords.latitude)
+    //     formData.append("longitudeDeliverer", location.coords.longitude)
 
-        finish(formData)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data)
-                setData(data);
+    //     finish(formData)
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             console.log(data)
+    //             setData(data);
 
-                // setTimeout(() => {
-                //     setCount(4)
-                // }, 1000)
-                // setTimeout(() => {
-                //     setCount(3)
-                // }, 2000)
-                // setTimeout(() => {
-                //     setCount(2)
-                // }, 3000)
-                // setTimeout(() => {
-                //     setCount(1)
-                // }, 4000)
-                // setTimeout(() => {
-                //     setCount(0)
-                //     navigation.navigate("home");
-                // }, 5000)
-            })
-    }
+    //             // setTimeout(() => {
+    //             //     setCount(4)
+    //             // }, 1000)
+    //             // setTimeout(() => {
+    //             //     setCount(3)
+    //             // }, 2000)
+    //             // setTimeout(() => {
+    //             //     setCount(2)
+    //             // }, 3000)
+    //             // setTimeout(() => {
+    //             //     setCount(1)
+    //             // }, 4000)
+    //             // setTimeout(() => {
+    //             //     setCount(0)
+    //             //     navigation.navigate("home");
+    //             // }, 5000)
+    //         })
+    // }
 
     const [count, setCount] = useState(5);
     const [data, setData] = useState({});
