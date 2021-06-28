@@ -16,14 +16,6 @@ const Home = ({ navigation }) => {
         navigation.navigate('entregas')
     }
 
-    const Historico = () => {
-        navigation.navigate('historico')
-    }
-
-    const Canhoto = () => {
-        navigation.navigate('canhoto')
-    }
-
     const CodigoBarras = () => {
         navigation.navigate('codigobarra')
     }
@@ -54,16 +46,6 @@ const Home = ({ navigation }) => {
                     />
                 </TouchableOpacity>
 
-
-                <TouchableOpacity onPress={() => Canhoto()}
-                    style={[styles.botaoo, { backgroundColor: "#3071D3", marginBottom: 30 }]}>
-                    <Text style={styles.texttouch}>Canhoto</Text>
-                    <Ionicons
-                        name="document-text-outline" color='white' size={25}
-                    />
-                </TouchableOpacity>
-
-
                 <TouchableOpacity onPress={() => CodigoBarraOcorrencia()}
                     style={[styles.botaoo, { backgroundColor: '#FEA520', marginBottom: 30 }]} >
                     <Text style={styles.texttouch}>Ocorrência</Text>
@@ -80,18 +62,6 @@ const Home = ({ navigation }) => {
                         name="close-circle-outline" color='white' size={25}
                     />
                 </TouchableOpacity>
-
-
-                {/* <TouchableOpacity onPress={() => Historico()}
-                    style={[styles.botaoo, { backgroundColor: '#000000' }]}>
-                    <Text style={styles.texttouch}>Historico</Text>
-                    <Ionicons
-                        name="reload-outline" color='white' size={25}
-                    />
-                </TouchableOpacity> */}
-                {/* fim dos botoes */}
-
-
 
             </View>
 

@@ -17,7 +17,7 @@ const DataeHora = ({ navigation, route }) => {
     }
 
     const FotoCanhoto = () => {
-        if(date === null || hour === null)
+        if (date === null || hour === null)
             Toast.show({
                 text1: "Campos obrigatórios",
                 text2: "Informe a data e a hora da entrega constantes no canhoto!",
@@ -26,14 +26,17 @@ const DataeHora = ({ navigation, route }) => {
         else
             navigation.navigate('fotocanhoto', {
                 accessKey: route.params.accessKey,
-                date: date,
-                hour: hour
+                day: date.getDate(),
+                month: date.getMonth(),
+                year: date.getFullYear(),
+                hour: hour.getHours(),
+                minutes: hour.getMinutes()
             });
     }
 
     return (
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            <Toast ref={(ref) => Toast.setRef(ref)} style={{zIndex: 99999}} />
+            <Toast ref={(ref) => Toast.setRef(ref)} style={{ zIndex: 99999 }} />
             <View style={styles.nav}>
 
                 <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -58,9 +61,9 @@ const DataeHora = ({ navigation, route }) => {
 
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
 
-                <Text style={{ fontSize: 24 }}>Data e hora da entrega</Text>
-                <View style={{ width: "90%", flexDirection: "row", justifyContent: "space-between", marginTop: 10 }}>
-                    <View style={[styles.input, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "45%", padding: 8 }]} onTouchStart={() => setShowDatePicker(true)}>
+                <Text style={[styles.title, { marginVertical: 30 }]}>Data e hora da entrega</Text>
+                <View style={{ width: "90%", alignItems: "center" }}>
+                    <View style={[styles.input, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "45%", padding: 8, marginBottom: 15 }]} onTouchStart={() => setShowDatePicker(true)}>
                         <Text style={{ opacity: 0.4 }}>{date === null ? "Data" : (date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear())}</Text>
                         <Text><Icon name="angle-down" /></Text>
                     </View>
@@ -68,6 +71,19 @@ const DataeHora = ({ navigation, route }) => {
                         <Text style={{ opacity: 0.4 }}>{hour === null ? "Hora" : (hour.getHours() + ":" + hour.getMinutes())}</Text>
                         <Text><Icon name="angle-down" /></Text>
                     </View>
+                </View>
+                <View style={{ height: '35%', width: '100%', alignItems: 'center', marginTop: 50 }}>
+                    <TouchableOpacity
+                        onPress={() => FotoCanhoto()}
+                        style={{ width: '55%', height: 30, backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center', marginBottom: 15 }}>
+                        <Text style={styles.textodbutton}>Prosseguir</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() => Home()}
+                        style={{ width: '55%', height: 30, backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                        <Text style={styles.textodbutton}>Cancelar</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             {
@@ -106,19 +122,6 @@ const DataeHora = ({ navigation, route }) => {
                     }}
                 />
             }
-            <View style={{ height: '35%', width: '100%', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TouchableOpacity
-                    onPress={() => FotoCanhoto()}
-                    style={{ width: '55%', height: '15%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
-                    <Text style={styles.textodbutton}>Prosseguir</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => Home()}
-                    style={{ width: '55%', height: '15%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
-                    <Text style={styles.textodbutton}>Cancelar</Text>
-                </TouchableOpacity>
-            </View>
         </View>
     );
 }
@@ -127,7 +130,7 @@ const styles = StyleSheet.create({
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
-        height: '13%',
+        height: '10%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -157,6 +160,10 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: "#C8C8C8",
         padding: 5
+    },
+    title: {
+        fontSize: 25,
+        fontWeight: "700"
     }
 });
 

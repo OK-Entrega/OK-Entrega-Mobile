@@ -16,7 +16,7 @@ const ImagemCamera = ({ navigation }) => {
         })();
 
         navigation.addListener("focus", () => {
-            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
         });
 
         navigation.addListener("blur", () => {
@@ -64,29 +64,27 @@ const ImagemCamera = ({ navigation }) => {
 
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-            <View style={{ flex: 1 }}>
-                <Camera style={{ width: '100%', height: '100%', justifyContent: "center" }}
-                    type={Camera.Constants.Type.back}
-                    ref={ref => {
-                        camera = ref;
-                    }}
-                    onBarCodeScanned={(result) => {
-                        DateAndHour(result);
-                    }}>
-                    <View style={styles.layerTop} />
-                    <View style={styles.layerCenter}>
-                        <View style={styles.layerLeft} />
-                        <View style={styles.focused} />
-                        <View style={styles.layerRight} />
-                    </View>
-                    <View style={styles.layerBottom} />
-                </Camera>
-            </View>
+            <Camera style={{ flex: 1, width: "100%", justifyContent: "center" }}
+                type={Camera.Constants.Type.back}
+                ref={ref => {
+                    camera = ref;
+                }}
+                onBarCodeScanned={(result) => {
+                    DateAndHour(result.data);
+                }}>
+                <View style={styles.layerTop} />
+                <View style={styles.layerCenter}>
+                    <View style={styles.layerLeft} />
+                    <View style={styles.focused} />
+                    <View style={styles.layerRight} />
+                </View>
+                <View style={styles.layerBottom} />
+            </Camera>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
-            <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+            <View style={{ width: '100%', height: '15%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                 <TouchableOpacity
                     onPress={() => Home()}
-                    style={{ width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                    style={{ width: 100, height: 30, backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
                     <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Cancelar</Text>
                 </TouchableOpacity>
             </View>
@@ -97,7 +95,7 @@ const ImagemCamera = ({ navigation }) => {
 const opacity = 'rgba(0, 0, 0, .6)';
 const styles = StyleSheet.create({
     layerTop: {
-        flex: 2,
+        height: "30%",
         backgroundColor: opacity
     },
     layerCenter: {
@@ -109,22 +107,20 @@ const styles = StyleSheet.create({
         backgroundColor: opacity
     },
     focused: {
-        width: "100%",
-        minHeight: 200,
-        height: 200
+        width: "80%",
     },
     layerRight: {
         flex: 1,
         backgroundColor: opacity
     },
     layerBottom: {
-        flex: 2,
+        height: "30%",
         backgroundColor: opacity
     },
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
-        height: '13%',
+        height: '15%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

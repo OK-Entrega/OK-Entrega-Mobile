@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons'
 
@@ -9,7 +9,7 @@ const FotoDosProdutos = ({ navigation, route }) => {
 
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.back);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         (async () => {
@@ -17,7 +17,7 @@ const FotoDosProdutos = ({ navigation, route }) => {
             setHasPermission(status === 'granted');
         })();
         navigation.addListener("focus", () => {
-            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
         });
 
         navigation.addListener("blur", () => {
@@ -48,9 +48,21 @@ const FotoDosProdutos = ({ navigation, route }) => {
 
     const tirarFoto = async () => {
         if (camera) {
+            setLoading(true)
             let foto = await camera.takePictureAsync();
             setImagemUri(foto.uri);
+            setLoading(false)
         }
+    }
+
+    const NaoTirarFoto = () => {
+        navigation.navigate('finalizarentrega', {
+            accessKey: route.params.accessKey,
+            date: route.params.date,
+            hour: route.params.hour,
+            voucherUri: route.params.voucherUri,
+            evidenceUri: null
+        })
     }
 
     return (
@@ -84,7 +96,7 @@ const FotoDosProdutos = ({ navigation, route }) => {
                     imagemUri === null
                         ?
                         <Camera style={{ width: '100%', height: '100%' }}
-                            type={type}
+                            type={Camera.Constants.Type.back}
                             ref={ref => {
                                 camera = ref;
                             }}>
@@ -96,11 +108,11 @@ const FotoDosProdutos = ({ navigation, route }) => {
             </View>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-            <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+            <View style={{ width: '100%', height: '15%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
 
                 <TouchableOpacity
                     onPress={() => Home()}
-                    style={{ width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                    style={{ width: 120, height: 30, backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
                     <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Cancelar</Text>
                 </TouchableOpacity>
                 {
@@ -108,20 +120,25 @@ const FotoDosProdutos = ({ navigation, route }) => {
                         ?
                         <>
                             <TouchableOpacity
-                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                style={{ width: 120, height: 30, backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' , flexDirection: "row"}}
                                 onPress={() => tirarFoto()}>
-
+                                {loading && <ActivityIndicator size="small" color="white" style={{ marginRight: 5, height: 10 }} />}
                                 <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar foto</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={{ width: 120, height: 30, backgroundColor: '#3071D3', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                onPress={() => NaoTirarFoto()}>
+                                <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Pular</Text>
                             </TouchableOpacity>
                         </>
                         :
                         <>
                             <TouchableOpacity
-                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }} onPress={() => confirmar()}>
+                                style={{ width: 120, height: 30, backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }} onPress={() => confirmar()}>
                                 <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Confirmar</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={{ width: '40%', height: '35%', backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
+                                style={{ width: 120, height: 30, backgroundColor: '#3071D3', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
                                 onPress={() => setImagemUri(null)}>
 
                                 <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar outra</Text>
@@ -144,7 +161,7 @@ const styles = StyleSheet.create({
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
-        height: '13%',
+        height: '15%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
