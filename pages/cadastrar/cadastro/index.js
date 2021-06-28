@@ -87,7 +87,7 @@ const Cadastro = ({ navigation }) => {
                 style={{width: '90%'}}
                 mode ="outlined"
                 underlineColor= '#2ECC71'
-                label="Digite seu nome"
+                label="Nome"
                 right={<TextInput.Affix text="/100" />}
                 outlineColor = '#2ECC71'
                 selectionColor = '#2ECC71'
@@ -103,7 +103,7 @@ const Cadastro = ({ navigation }) => {
                     style={{width: '90%'}}
                     mode ="outlined"
                     underlineColor= '#2ECC71'
-                    label="Digite seu numero de telefone"
+                    label="Número de celular"
                     right={<TextInput.Affix text="/100" />}
                     outlineColor = '#2ECC71'
                     selectionColor = '#2ECC71'
@@ -119,7 +119,7 @@ const Cadastro = ({ navigation }) => {
                             style={{width: '90%'}}
                             mode ="outlined"
                             underlineColor= '#2ECC71'
-                            label="Digite sua senha"
+                            label="Senha"
                             right={<TextInput.Affix text="/100" />}
                             outlineColor = '#2ECC71'
                             selectionColor = '#2ECC71'
@@ -147,7 +147,7 @@ const Cadastro = ({ navigation }) => {
                 onPress={() => Login()}
             >
                 Já tem uma conta?
-            <Text style={styles.innerText}> Logar-se</Text>
+            <Text style={styles.innerText}> Entrar</Text>
 
             </Text>
 
@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 25,
     }, logo: {
-        width: 160,
-        height: 150,
+        width: 90,
+        height: 80,
         zIndex: -100
     }, checkboxContainer: {
         flexDirection: "row",

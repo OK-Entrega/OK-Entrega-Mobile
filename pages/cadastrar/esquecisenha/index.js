@@ -59,9 +59,7 @@ const EsqueciSenha =({navigation})=>{
         <TextInput
                 style={{width: '90%'}}
                 mode ="outlined"
-                underlineColor= '#2ECC71'
-                label="Digite seu numero de telefone"
-                right={<TextInput.Affix text="/100" />}
+                label="Número de celular"
                 outlineColor = '#2ECC71'
                 selectionColor = '#2ECC71'
                 borderColor = '#2ECC71'
@@ -88,8 +86,8 @@ const EsqueciSenha =({navigation})=>{
             
             onPress={() => Login()}
             >
-                lembrou a senha?
-            <Text style={styles.innerText}> Logar-se</Text>
+                Lembrou a senha?
+            <Text style={styles.innerText}> Entrar</Text>
                 
             </Text>
 
@@ -143,8 +141,8 @@ const EsqueciSenha =({navigation})=>{
             fontSize: 25,           
        
         }, logo : {
-            width: 160,
-            height: 150
+            width: 90,
+            height: 80
         }, inputinterno: {
             width: '90%'
         }, innerText : {

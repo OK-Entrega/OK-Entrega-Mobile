@@ -39,8 +39,11 @@ const FotoDosProdutos = ({ navigation, route }) => {
     const confirmar = () => {
         navigation.navigate('finalizarentrega', {
             accessKey: route.params.accessKey,
-            date: route.params.date,
+            day: route.params.day,
+            month: route.params.month,
+            year: route.params.year,
             hour: route.params.hour,
+            minutes: route.params.minutes,
             voucherUri: route.params.voucherUri,
             evidenceUri: imagemUri
         })
@@ -58,8 +61,11 @@ const FotoDosProdutos = ({ navigation, route }) => {
     const NaoTirarFoto = () => {
         navigation.navigate('finalizarentrega', {
             accessKey: route.params.accessKey,
-            date: route.params.date,
+            day: route.params.day,
+            month: route.params.month,
+            year: route.params.year,
             hour: route.params.hour,
+            minutes: route.params.minutes,
             voucherUri: route.params.voucherUri,
             evidenceUri: null
         })
@@ -120,7 +126,7 @@ const FotoDosProdutos = ({ navigation, route }) => {
                         ?
                         <>
                             <TouchableOpacity
-                                style={{ width: 120, height: 30, backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center' , flexDirection: "row"}}
+                                style={{ width: 120, height: 30, backgroundColor: '#2ECC71', borderRadius: 8, alignItems: 'center', justifyContent: 'center', flexDirection: "row" }}
                                 onPress={() => tirarFoto()}>
                                 {loading && <ActivityIndicator size="small" color="white" style={{ marginRight: 5, height: 10 }} />}
                                 <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Tirar foto</Text>

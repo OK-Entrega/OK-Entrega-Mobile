@@ -40,8 +40,11 @@ const FotoCanhoto = ({ navigation, route }) => {
     const FotoDosProdutos = () => {
         navigation.navigate('fotodosprodutos', {
             accessKey: route.params.accessKey,
-            date: route.params.date,
+            day: route.params.day,
+            month: route.params.month,
+            year: route.params.year,
             hour: route.params.hour,
+            minutes: route.params.minutes,
             voucherUri: imagemUri
         })
     }

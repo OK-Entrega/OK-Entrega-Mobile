@@ -43,7 +43,11 @@ const Stack = createStackNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="login">
+
+                {/* <Stack.Screen name="login" component={Login}/>
+                <Stack.Screen name="cadastro" component={Cadastro}/>
+                <Stack.Screen name="esquecisenha" component={EsqueciSenha}/> */}
 
                 <Stack.Screen name="home" component={Home} />
 
@@ -61,7 +65,6 @@ export default function App() {
                 <Stack.Screen name="descricaoprblema2" component={DescricaoProblema2} />
                 <Stack.Screen name="motivodevolucao" component={MotivoDevolucao} />
                 <Stack.Screen name="confirmadevolucao" component={ConfirmaDevolucao} />
-
 
                 <Stack.Screen name="codigobarraocorrencia" component={CodigoBarraOcorrencia} />
                 <Stack.Screen name="datahoraocorrencia" component={DataHoraOcorrencia} />
