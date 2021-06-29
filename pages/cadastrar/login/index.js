@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import { url_api } from "../../../utils/constants";
 import { save_token } from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { TextInput } from 'react-native-paper';
 
 const Login = ({ navigation }) => {
 
+    useEffect(() => {
+        AsyncStorage.getItem("jwt")
+            .then(data => {
+                if(data !== null)
+                    navigation.navigate("home")
+            })
+    }, [])
 
     const [cellphoneNumber, setCellphoneNumber] = useState('');
     const [password, setPassword] = useState('');
@@ -76,37 +84,30 @@ const Login = ({ navigation }) => {
             </View>
 
 
-            <View style={{ width: '90%', height: '16%', justifyContent: 'space-around' }}>
 
 
 
+            <TextInput
 
-                <TextInput
-
-                    mode="outlined"
-                    label="Número de celular"
-                    outlineColor='#2ECC71'
-                    onChangeText={text => setCellphoneNumber(text)}
-                    value={cellphoneNumber}
-                    style={{ marginBottom: 40 }}
-
-                />
+                mode="outlined"
+                label="Número de celular"
+                onChangeText={text => setCellphoneNumber(text)}
+                value={cellphoneNumber}
+                style={{ width: "90%" }}
+                keyboardType="numeric"
+            />
 
 
 
+            <TextInput
+                onChangeText={text => setPassword(text)}
+                value={password}
+                secureTextEntry={true}
+                mode="outlined"
+                label="Senha"
+                style={{ width: '90%' }}
+            />
 
-
-                <TextInput
-                    onChangeText={text => setPassword(text)}
-                    value={password}
-                    secureTextEntry={true}
-                    mode="outlined"
-                    label="Senha"
-
-                />
-
-
-            </View>
 
             {/* <Text
                 style={styles.esqueci}
@@ -118,7 +119,7 @@ const Login = ({ navigation }) => {
 
 
             <TouchableOpacity
-                style={[styles.button, {flexDirection: "row"}]}
+                style={[styles.button, { flexDirection: "row" }]}
                 onPress={Logar}
             >{loading && <ActivityIndicator size="small" color="white" style={{ marginRight: 5, height: 10 }} />}
                 <Text style={styles.buttonText}>Entrar</Text>
@@ -144,7 +145,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F7F7F7',
         alignItems: 'center',
         paddingTop: '22%'
-
 
     },
     button: {

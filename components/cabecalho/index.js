@@ -1,63 +1,50 @@
 import React, { useState } from "react";
-import { View, Image, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, StatusBar, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Cabecalho = ({ navigation }) => {
 
-    const Home = () => {
+    const home = () => {
         navigation.navigate('home')
     }
-
-    const [visible, setVisible] = React.useState(false);
-
-    const showModal = () => setVisible(true);
-    const hideModal = () => setVisible(false);
 
     return (
         <>
             <View style={styles.nav}>
                 <StatusBar barStyle="white" backgroundColor="#2ECC71" />
-                <TouchableOpacity onPress={() => Home()} >
-                    <Ionicons
-                        name="home-outline" color='white' size={25}
-                    />
+                <TouchableOpacity onPress={() => home()} >
+                    <Icon name="home" color="white" size={25} />
                 </TouchableOpacity >
-                <TouchableOpacity onPress={() => Home()}>
+                <TouchableOpacity onPress={() => home()}>
                     <Image
                         style={styles.logo}
                         source={require('../../assets/logo.png')}
-                        onPress={() => Home()}
+                        onPress={() => home()}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={showModal}>
-                    <Ionicons
-                        name="ellipsis-vertical-outline" color='white' size={25}
-                    />
+                <TouchableOpacity onPress={() => {
+                    Alert.alert(
+                        "Sair do aplicativo",
+                        "Tem certeza de que deseja sair do aplicativo?",
+                        [
+                            {
+                                text: "Cancelar",
+                                onPress: () => console.log(),
+                                style: "cancel"
+                            },
+                            {
+                                text: "Sim", onPress: () => {
+                                    AsyncStorage.removeItem("jwt");
+                                    navigation.navigate("login");
+                                }
+                            }
+                        ]
+                    );
+                }}>
+                    <Icon name="sign-out-alt" color="white" size={25} />
                 </TouchableOpacity>
-                <Modal visible={visible} onDismiss={hideModal} style={styles.containerStyle}>
-                    <TouchableOpacity>
-                        <Ionicons
-                            name="close" color='white' size={25}
-                        />
-                    </TouchableOpacity>
-                    <View >
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }}  >
-                            <Ionicons
-                                name="person" color='white' size={25}
-                            />
-                            <Text style={styles.titmodal}>Ver perfil</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View >
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center' }}  >
-                            <Ionicons
-                                name="exit" color='red' size={25}
-                            />
-                            <Text style={styles.titmodal}>Sair</Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
             </View>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
         </>

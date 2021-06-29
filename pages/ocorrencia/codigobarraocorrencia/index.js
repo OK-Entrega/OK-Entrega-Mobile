@@ -9,13 +9,19 @@ const CodigoBarraOcorrencia = ({ navigation }) => {
 
     const [imagemUri, setImagemUri] = useState(null);
     const [hasPermission, setHasPermission] = useState(null);
-    const [type, setType] = useState(Camera.Constants.Type.back);
 
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestPermissionsAsync();
             setHasPermission(status === 'granted');
         })();
+        navigation.addListener("focus", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
+        });
+
+        navigation.addListener("blur", () => {
+            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+        });
     }, []);
 
     if (hasPermission === null) {
@@ -25,28 +31,14 @@ const CodigoBarraOcorrencia = ({ navigation }) => {
         return <Text>No access to camera</Text>;
     }
 
-    const DigitarCodigoOcorrencia = () => {
-        navigation.navigate('digitecodigoocorrencia')
+    const DateAndHour = (data) => {
+        navigation.navigate('datahoraocorrencia', {
+            accessKey: data
+        })
     }
 
     const Home = () => {
         navigation.navigate('home')
-    }
-
-    const tirarFoto = async () => {
-        if (camera) {
-            let foto = await camera.takePictureAsync();
-            setImagemUri(foto.uri);
-
-        }
-
-        CancelarCode = async () => {
-            if (camera) {
-                setImagemUri(false);
-
-            }
-        }
-
     }
 
     return (
@@ -75,55 +67,65 @@ const CodigoBarraOcorrencia = ({ navigation }) => {
 
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Camera style={{ width: '100%', height: '100%' }}
-                    type={type}
-                    ref={ref => {
-                        camera = ref;
-                    }}>
-
-
-                    {imagemUri && <Image source={{ uri: imagemUri }} style={{ width: '100%', height: '100%' }} />}
-
-
-
-                </Camera>
-
-            </View>
+            <Camera style={{ flex: 1, width: "100%", justifyContent: "center" }}
+                autoFocus={true}
+                type={Camera.Constants.Type.back}
+                ref={ref => {
+                    camera = ref;
+                }}
+                onBarCodeScanned={(result) => {
+                    DateAndHour(result.data);
+                }}>
+                <View style={styles.layerTop} />
+                <View style={styles.layerCenter}>
+                    <View style={styles.layerLeft} />
+                    <View style={styles.focused} />
+                    <View style={styles.layerRight} />
+                </View>
+                <View style={styles.layerBottom} />
+            </Camera>
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
-            <View style={{ width: '100%', height: '20%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-
+            <View style={{ width: '100%', height: '15%', backgroundColor: '#031F3C', alignItems: 'flex-end', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                 <TouchableOpacity
                     onPress={() => Home()}
-                    style={{ width: '40%', height: '35%', backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
+                    style={{ width: 120, height: 30, backgroundColor: '#E92525', borderRadius: 8, alignItems: 'center', justifyContent: 'center', }}>
                     <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Cancelar</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity
-
-                    style={{ width: '40%', height: '35%', backgroundColor: '#3071D3', borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}
-                    onPress={() => DigitarCodigoOcorrencia()}>
-
-                    <Text style={{ fontWeight: 'bold', fontFamily: 'Segoe UI', color: 'white' }}>Digitar código</Text>
-                </TouchableOpacity>
-
             </View>
-
         </View>
     );
-
-
 }
 
-
-
+const opacity = 'rgba(0, 0, 0, .6)';
 const styles = StyleSheet.create({
-
+    layerTop: {
+        height: "30%",
+        backgroundColor: opacity
+    },
+    layerCenter: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    layerLeft: {
+        flex: 1,
+        backgroundColor: opacity
+    },
+    focused: {
+        width: "80%",
+    },
+    layerRight: {
+        flex: 1,
+        backgroundColor: opacity
+    },
+    layerBottom: {
+        height: "30%",
+        backgroundColor: opacity
+    },
     nav: {
         backgroundColor: '#031F3C',
         width: '100%',
-        height: '13%',
+        height: '15%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',

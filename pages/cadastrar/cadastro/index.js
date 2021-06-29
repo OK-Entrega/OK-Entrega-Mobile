@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { StyleSheet, CheckBox, Text, View,  TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, CheckBox, Text, View, TouchableOpacity, Image } from 'react-native';
 import Login from '../login';
 // Storage
 //icons
 import { Ionicons } from '@expo/vector-icons'
 import { url_api } from "../../../utils/constants";
-import {save_token} from "../../../utils/save-token";
+import { save_token } from "../../../utils/save-token";
 import Toast from 'react-native-toast-message';
 
 import { TextInput } from 'react-native-paper';
@@ -16,7 +16,7 @@ const Cadastro = ({ navigation }) => {
     const [cellphoneNumber, setCellphoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
-    
+
 
 
     const Cadastrar = () => {
@@ -77,63 +77,45 @@ const Cadastro = ({ navigation }) => {
             <View>
                 <Text style={{ fontSize: 45, color: 'black', padding: 30, fontWeight: 'bold', fontFamily: 'Segoe UI' }}>
                     Cadastro
-                    </Text>
+                </Text>
             </View>
 
 
-            
+
 
             <TextInput
-                style={{width: '90%'}}
-                mode ="outlined"
-                underlineColor= '#2ECC71'
+                style={{ width: '90%' }}
+                mode="outlined"
                 label="Nome"
-                right={<TextInput.Affix text="/100" />}
-                outlineColor = '#2ECC71'
-                selectionColor = '#2ECC71'
-                borderColor = '#2ECC71'
-                color = '#2ECC71'
                 onChangeText={text => setName(text)}
                 value={name}
-                
 
-         />
-
-    <TextInput
-                    style={{width: '90%'}}
-                    mode ="outlined"
-                    underlineColor= '#2ECC71'
-                    label="Número de celular"
-                    right={<TextInput.Affix text="/100" />}
-                    outlineColor = '#2ECC71'
-                    selectionColor = '#2ECC71'
-                    borderColor = '#2ECC71'
-                    color = '#2ECC71'
-                    onChangeText={text => setCellphoneNumber(text)}
-                    value={cellphoneNumber}
-                    
 
             />
 
-        <TextInput
-                            style={{width: '90%'}}
-                            mode ="outlined"
-                            underlineColor= '#2ECC71'
-                            label="Senha"
-                            right={<TextInput.Affix text="/100" />}
-                            outlineColor = '#2ECC71'
-                            selectionColor = '#2ECC71'
-                            borderColor = '#2ECC71'
-                            color = '#2ECC71'
-                            onChangeText={text => setPassword(text)}
-                            value={password}
-                            secureTextEntry={true}
-                            value={password}
-                            
+            <TextInput
+                style={{ width: '90%' }}
+                mode="outlined"
+                label="Número de celular"
+                onChangeText={text => setCellphoneNumber(text)}
+                value={cellphoneNumber}
+                keyboardType="numeric"
 
-                    />
+            />
 
-    
+            <TextInput
+                style={{ width: '90%' }}
+                mode="outlined"
+                label="Senha"
+                onChangeText={text => setPassword(text)}
+                value={password}
+                secureTextEntry={true}
+                value={password}
+
+
+            />
+
+
 
             <TouchableOpacity
                 style={styles.button}
@@ -147,7 +129,7 @@ const Cadastro = ({ navigation }) => {
                 onPress={() => Login()}
             >
                 Já tem uma conta?
-            <Text style={styles.innerText}> Entrar</Text>
+                <Text style={styles.innerText}> Entrar</Text>
 
             </Text>
 
