@@ -110,10 +110,11 @@ const Confirma = ({ navigation, route }) => {
                     />
                 </TouchableOpacity>
             </View>
+            <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
             {
                 data.data === undefined && data.statusCode === undefined
                     ?
-                    <View style={{height: "90%", justifyContent: "center"}}>
+                    <View style={{ height: "90%", justifyContent: "center" }}>
                         <ActivityIndicator size="large" color="#2ECC71" />
                     </View>
                     :

@@ -66,6 +66,7 @@ const CodigoBarras = ({ navigation }) => {
             <View style={{ width: '100%', height: '0.5%', backgroundColor: '#2ECC71' }}></View>
 
             <Camera style={{ flex: 1, width: "100%", justifyContent: "center" }}
+            autoFocus={true}
                 type={Camera.Constants.Type.back}
                 ref={ref => {
                     camera = ref;

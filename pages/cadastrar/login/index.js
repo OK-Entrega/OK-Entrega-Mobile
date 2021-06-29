@@ -108,13 +108,13 @@ const Login = ({ navigation }) => {
 
             </View>
 
-            <Text
+            {/* <Text
                 style={styles.esqueci}
                 onPress={() => EsqueciSenha()}
             >
                 Esqueci minha senha
 
-            </Text>
+            </Text> */}
 
 
             <TouchableOpacity

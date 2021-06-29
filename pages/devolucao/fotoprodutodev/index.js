@@ -48,8 +48,11 @@ const FotoDosProdutoDev = ({ navigation, route }) => {
     const NaoTirarFoto = () => {
         navigation.navigate('descricaoproblema', {
             accessKey: route.params.accessKey,
-            date: route.params.date,
+            day: route.params.day,
+            month: route.params.month,
+            year: route.params.year,
             hour: route.params.hour,
+            minutes: route.params.minutes,
             evidenceUri: null
         })
     }
@@ -57,8 +60,11 @@ const FotoDosProdutoDev = ({ navigation, route }) => {
     const confirmar = () => {
         navigation.navigate('descricaoproblema', {
             accessKey: route.params.accessKey,
-            date: route.params.date,
+            day: route.params.day,
+            month: route.params.month,
+            year: route.params.year,
             hour: route.params.hour,
+            minutes: route.params.minutes,
             evidenceUri: imagemUri
         })
     }
