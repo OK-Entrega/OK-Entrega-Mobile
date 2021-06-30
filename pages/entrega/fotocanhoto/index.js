@@ -52,7 +52,7 @@ const FotoCanhoto = ({ navigation, route }) => {
     const tirarFoto = async () => {
         if (camera) {
             setLoading(true);
-            let foto = await camera.takePictureAsync();
+            let foto = await camera.takePictureAsync({quality: 0.8});
             setImagemUri(foto.uri);
             setLoading(false);
         }
@@ -83,7 +83,7 @@ const FotoCanhoto = ({ navigation, route }) => {
                 {
                     imagemUri === null
                         ?
-                        <Camera style={{ width: '100%', height: '100%' }}
+                        <Camera style={{ width: "100%", height: "100%" }}
                             type={Camera.Constants.Type.back}
                             ref={ref => {
                                 camera = ref;

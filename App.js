@@ -55,7 +55,6 @@ export default function App() {
                     <Stack.Screen name="fotocannota2" component={FotoCanNota2} />
                     <Stack.Screen name="confirmarcanhoto" component={ConfirmarCanhoto} />
 
-
                     <Stack.Screen name="codigobarra" component={CodigoBarras} />
                     <Stack.Screen name="datahoradevolucao" component={DataHoraDevolucao} />
                     <Stack.Screen name="fotoprodutodev" component={FotoDosProdutoDev} />
@@ -70,7 +69,6 @@ export default function App() {
                     <Stack.Screen name="fotoocorrencia2" component={FotoOcorrencia2} />
                     <Stack.Screen name="motivoocorrencia" component={MotivoOcorrencia} />
                     <Stack.Screen name="ocorrenciaconfirmacao" component={OcorrenciaConfirmacao} />
-
 
                     <Stack.Screen name="finalizarentrega" component={Confirma} />
                     <Stack.Screen name="dataehora" component={DataeHora} />

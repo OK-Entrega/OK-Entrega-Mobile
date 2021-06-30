@@ -24,6 +24,10 @@ const Home = ({ navigation }) => {
         navigation.navigate('codigobarraocorrencia')
     }
 
+    const Historico = () => {
+        navigation.navigate('historico')
+    }
+
     return (
 
         <View style={styles.container}>
@@ -55,10 +59,18 @@ const Home = ({ navigation }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => CodigoBarraOcorrencia()}
-                    style={[styles.botaoo, { backgroundColor: '#FEA520' }]} >
+                    style={[styles.botaoo, { backgroundColor: '#FEA520', marginBottom: 30 }]} >
                     <Text style={styles.texttouch}>Ocorrência</Text>
                     <Ionicons
                         name="at-outline" color='white' size={25}
+                    />
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => Historico()}
+                    style={[styles.botaoo, { backgroundColor: 'black' }]} >
+                    <Text style={styles.texttouch}>Histórico</Text>
+                    <Ionicons
+                        name="at-md-time" color='white' size={25}
                     />
                 </TouchableOpacity>
 

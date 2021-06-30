@@ -27,7 +27,7 @@ const DataeHora = ({ navigation, route }) => {
             navigation.navigate('fotocanhoto', {
                 accessKey: route.params.accessKey,
                 day: date.getDate(),
-                month: date.getMonth(),
+                month: (date.getMonth() + 1),
                 year: date.getFullYear(),
                 hour: hour.getHours(),
                 minutes: hour.getMinutes()
@@ -64,7 +64,7 @@ const DataeHora = ({ navigation, route }) => {
                 <Text style={[styles.title, { marginVertical: 30 }]}>Data e hora da entrega</Text>
                 <View style={{ width: "90%", alignItems: "center" }}>
                     <View style={[styles.input, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "45%", padding: 8, marginBottom: 15 }]} onTouchStart={() => setShowDatePicker(true)}>
-                        <Text style={{ opacity: 0.4 }}>{date === null ? "Data" : (date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear())}</Text>
+                        <Text style={{ opacity: 0.4 }}>{date === null ? "Data" : (date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear())}</Text>
                         <Text><Icon name="angle-down" /></Text>
                     </View>
                     <View style={[styles.input, { flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: "45%", padding: 8 }]} onTouchStart={() => setShowHourPicker(true)}>

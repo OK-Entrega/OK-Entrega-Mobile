@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const url_api = "http://192.168.1.104:5000/api/v1";
+export const url_api = "http://192.168.1.102:5000/api/v1";
 
 export const resize = (uri) => {
     ImageResizer.createResizedImage(uri, 8, 6, 'JPEG', 80)
